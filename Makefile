@@ -26,6 +26,6 @@ play: start
 	$(JVM) -cp $(BIN_DIR) src/Start
 
 clean : 
-	$(RM) $(BIN_DIR)src/*.class
+	$(RM) -f $(BIN_DIR)src/*.class
 
 #clear && make clean && make play

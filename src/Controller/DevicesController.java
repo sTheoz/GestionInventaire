@@ -5,7 +5,6 @@ import src.Model.devices.*;
 public class DevicesController {
 	
     public DevicesController(){
-        System.out.println("Bonjour DevicesController");
     }
 
     public void addPhone(String ref, String name, String brand, double price, Phone.SE se, double sz, Device.State st, String location, int nb){

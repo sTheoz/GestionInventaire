@@ -7,7 +7,6 @@ public class Start {
 	
     public static void injectData(){
         System.out.println("================= DATA INJECTION =================");
-        
     }
 
     public static void main(String[] args){
@@ -18,7 +17,8 @@ public class Start {
         BorrowView borrowView = new BorrowView();
         StockView stockView = new StockView();
         MenuView menuView = new MenuView();
-        (menuView).printMenu();
+        (menuView).executeMenu( (menuView).printMenu() );
+
         injectData();
     }
 	
