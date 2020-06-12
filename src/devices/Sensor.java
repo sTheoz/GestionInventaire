@@ -4,15 +4,10 @@ public class Sensor extends Devices{
 	
 	public Sensor(){
 		super();
-		this.type = Devices.Type.Sensor;
 	}
 	
-	public Sensor (String ref, String nom, String marque, double prix){
-		this.reference = ref ; 
-		this.name = nom ; 
-		this.brand = marque ; 
-		this.price = prix ;
-		this.type = Devices.Type.Sensor;
+	public Sensor (String ref, String name, String brand, double price, State st){
+		super(ref, name, brand, price, st);
 	}
 	
 	public String toString(){

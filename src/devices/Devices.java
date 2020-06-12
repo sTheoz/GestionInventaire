@@ -2,16 +2,35 @@ package src.devices;
 
 public abstract class Devices {
 	
-	public enum Type{Phone, Sensor, Headset, GameController, Webcam, Tablet};
+	public enum State{OK, KO, INCIDENT, GOOD, BAD, NEW, NA}
 
 	protected String reference ; 
 	protected String name ; 
 	protected String brand ;
 	protected double price ;
-	protected Type type;
-	
-	public Type getType(){
-		return this.type;
+	protected State state;
+	protected int id;
+
+	public Devices(String ref, String name, String brand, double price, State st){
+		super();
+		Stock s = Stock.getInstance();
+		this.id = s.getId();
+		this.reference = ref ;
+		this.name = name ;
+		this.brand = brand ;
+		this.price = price ;
+		this.state = st;
+	}
+
+	public Devices(){
+		super();
+		this.state = State.NEW;
+		Stock s = Stock.getInstance();
+		this.id = s.getId();
+	}
+
+	public State getState(){
+		return state;
 	}
 
 	public String getReference(){
@@ -29,9 +48,9 @@ public abstract class Devices {
 	public double getPrice(){
 		return price; 
 	}
-	
-	public void setType(Type t){
-		type = t;
+
+	public void setState(State st){
+		this.state = st;
 	}
 
 	public void setReference(String ref){

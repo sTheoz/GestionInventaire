@@ -8,25 +8,16 @@ public class Headset extends Devices{
 	public Headset(){
 		super();
 		this.vr = 0;
-		this.type = Devices.Type.Headset;
 	}
 	
-	public Headset (String ref, String nom, String marque, double prix){
-		this.reference = ref ; 
-		this.name = nom ; 
-		this.brand = marque ; 
-		this.price = prix ;
+	public Headset (String ref, String name, String brand, double price, State st){
+		super(ref, name, brand, price, st);
 		this.vr = 0;
-		this.type = Devices.Type.Headset;
 	}
 
-	public Headset (String ref, String nom, String marque, double prix, int vr){
-		this.reference = ref ; 
-		this.name = nom ; 
-		this.brand = marque ; 
-		this.price = prix ;
+	public Headset (String ref, String name, String brand, double price, int vr, State st){
+		super(ref, name, brand, price, st);
 		this.vr = vr;
-		this.type = Devices.Type.Headset;
 	}
 	
 	public String toString(){

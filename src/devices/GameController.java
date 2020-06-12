@@ -4,15 +4,11 @@ public class GameController extends Devices{
 	
 	public GameController(){
 		super();
-		this.type = Devices.Type.GameController;
+		this.state = State.NEW;
 	}
 	
-	public GameController (String ref, String nom, String marque, double prix){
-		this.reference = ref ;
-		this.name = nom ;
-		this.brand = marque ;
-		this.price = prix ;
-		this.type = Devices.Type.GameController;
+	public GameController (String ref, String name, String brand, double price, State st){
+		super(ref, name, brand, price, st);
 	}
 	
 	public String toString(){

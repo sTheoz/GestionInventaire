@@ -2,28 +2,22 @@ package src.devices;
 
 public class Telephone extends Devices{
 	
-	public enum SE{Android, iOs, Windows};
+	public enum SE{Android, iOs, Windows, NA};
 	
 	private SE systemExp ; 
 	double size ; 
 	
 	
 	public Telephone(){
-		systemExp = null; 
-		size = 0.0;
-		this.type = Devices.Type.Phone;
+		super();
+		this.systemExp = SE.NA;
+		this.size = 0.0;
 	}
 	
-	public Telephone (String ref, String nom, String marque, double prix, SE se, double sz){
-		this.reference = ref ; 
-		this.name = nom ; 
-		this.brand = marque ; 
-		this.price = prix ;
-			
+	public Telephone (String ref, String name, String brand, double price, SE se, double sz, State st){
+		super(ref, name, brand, price, st);
 		systemExp = se ; 
 		size = sz ;
-
-		this.type = Devices.Type.Phone;
 	}
 	
 	

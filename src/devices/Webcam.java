@@ -4,24 +4,19 @@ package src.devices;
 
 public class Webcam extends Devices{
 
-	public enum Resolution{LOW, MEDIUM, HIGH};  
+	public enum Resolution{LOW, MEDIUM, HIGH, NA};  
 	
 	private Resolution res ; 
 	
 	
 	public Webcam(){
-		res = null; 
-		this.type = Devices.Type.Webcam;
+		super();
+		this.res = Resolution.NA;
 	}
 	
-	public Webcam (String ref, String nom, String marque, double prix, Resolution rs){
-	this.reference = ref ; 
-	this.name = nom ; 
-	this.brand = marque ; 
-	this.price = prix ; 
-	this.type = Devices.Type.Webcam;
-
-	res = rs ; 	 
+	public Webcam (String ref, String name, String brand, double price, Resolution rs, State st){
+		super(ref, name, brand, price, st);
+		res = rs ;
 	}
 	
 	
