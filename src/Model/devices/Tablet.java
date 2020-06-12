@@ -6,8 +6,8 @@ public class Tablet extends Phone{
 		super();
 	}
 	
-	public Tablet (String ref, String nom, String marque, double prix, SE se, double sz, State st){
-		super(ref, nom, marque, prix, se, sz, st);
+	public Tablet (String ref, String nom, String marque, double prix, SE se, double sz, State st, String location){
+		super(ref, nom, marque, prix, se, sz, st, location);
 	}
 	
 }

@@ -12,8 +12,8 @@ public class Webcam extends Device{
 		this.res = Resolution.NA;
 	}
 	
-	public Webcam (String ref, String name, String brand, double price, Resolution rs, State st){
-		super(ref, name, brand, price, st);
+	public Webcam (String ref, String name, String brand, double price, Resolution rs, State st, String location){
+		super(ref, name, brand, price, st, location);
 		res = rs ;
 	}
 	
@@ -23,11 +23,10 @@ public class Webcam extends Device{
 		}
 	
 	public Resolution getRes(){
-	return res ;	
-	
+		return res ;	
 	}
-public String toString(){
-	return super.toString()+ ", de resolution " + this.getRes();	
-	}	
-	
+
+	public String toString(){
+		return super.toString()+ ", de resolution " + this.getRes();	
+	}
 }

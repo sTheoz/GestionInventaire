@@ -6,8 +6,8 @@ public class Sensor extends Device{
 		super();
 	}
 	
-	public Sensor (String ref, String name, String brand, double price, State st){
-		super(ref, name, brand, price, st);
+	public Sensor (String ref, String name, String brand, double price, State st, String location){
+		super(ref, name, brand, price, st, location);
 	}
 	
 	public String toString(){

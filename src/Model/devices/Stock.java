@@ -1,20 +1,26 @@
 package src.Model.devices;
 
+import java.util.ArrayList;
+
 public class Stock {
 
     private int id;
     private int numberElement;
+    private ArrayList<Device> inventory;
 
     private Stock(){
         super();
         id = 0;
         this.numberElement = 0;
+        this.inventory = new ArrayList<Device>();
     }
 
     private Stock(int id, int nbEle){
         super();
         this.id = id;
         this.numberElement = nbEle;
+        this.inventory = new ArrayList<Device>();
+        //Il faut initialiser l'inventaire avec les elements déjà existant
     }
      
     /** Instance unique non préinitialisée */
@@ -43,11 +49,11 @@ public class Stock {
         return idR;
     }
 
-    public void incrementStock(){
+    private void incrementStock(){
         this.numberElement++;
     }
 
-    public void decrementStock(){
+    private void decrementStock(){
         this.numberElement--;
     }
 
@@ -55,4 +61,13 @@ public class Stock {
         return numberElement;
     }
 
+    public void addDevice(Device d){
+        inventory.add(d);
+        incrementStock();
+    }
+
+    public void removeDevice(Device d){
+        inventory.remove(d);
+        decrementStock();
+    }
 }

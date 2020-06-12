@@ -1,5 +1,7 @@
 package src.Model.devices;
 
+import src.Model.people.People;
+
 public abstract class Device {
 	
 	public enum State{OK, KO, INCIDENT, GOOD, BAD, NEW, NA}
@@ -10,8 +12,10 @@ public abstract class Device {
 	protected double price ;
 	protected State state;
 	protected int id;
+	protected String location;
+	protected People accountable;
 
-	public Device(String ref, String name, String brand, double price, State st){
+	public Device(String ref, String name, String brand, double price, State st, String location){
 		super();
 		Stock s = Stock.getInstance();
 		this.id = s.getId();
@@ -20,6 +24,8 @@ public abstract class Device {
 		this.brand = brand ;
 		this.price = price ;
 		this.state = st;
+		this.location = location;
+		s.addDevice(this);
 	}
 
 	public Device(){
@@ -27,6 +33,12 @@ public abstract class Device {
 		this.state = State.NEW;
 		Stock s = Stock.getInstance();
 		this.id = s.getId();
+		this.location = "Storage";
+		s.addDevice(this);
+	}
+
+	public String getLocation(){
+		return this.location;
 	}
 
 	public State getState(){
@@ -49,6 +61,10 @@ public abstract class Device {
 		return price; 
 	}
 
+	public void setLocation(String l){
+		this.location = l;
+	}
+
 	public void setState(State st){
 		this.state = st;
 	}
@@ -67,10 +83,12 @@ public abstract class Device {
 	public void setPrice(double prix){
 		price = prix; 		
 	}
-	
-	public String toString(){
-	return " Cet appareil est le " + this.getName()+ " dont la reference est "+ this.getReference()+ " , la marque est "+ this.getBrand()+
-			", le prix en euros "+ this.getPrice(); 
+
+	public void setAccountable(People p){
+		this.accountable = p;
 	}
-	
+
+	public String toString(){
+		return "[" + id + "] " + brand + " " + name + " " + price + "€ [" + state + "]";
+	}	
 }

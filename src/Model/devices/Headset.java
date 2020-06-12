@@ -10,13 +10,13 @@ public class Headset extends Device{
 		this.vr = 0;
 	}
 	
-	public Headset (String ref, String name, String brand, double price, State st){
-		super(ref, name, brand, price, st);
+	public Headset (String ref, String name, String brand, double price, State st, String location){
+		super(ref, name, brand, price, st, location);
 		this.vr = 0;
 	}
 
-	public Headset (String ref, String name, String brand, double price, int vr, State st){
-		super(ref, name, brand, price, st);
+	public Headset (String ref, String name, String brand, double price, int vr, State st, String location){
+		super(ref, name, brand, price, st, location);
 		this.vr = vr;
 	}
 	
