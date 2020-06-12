@@ -10,14 +10,11 @@ public class Start {
     }
 
     public static void main(String[] args){
-        StockController stockController = new StockController();
         DevicesView devicesView = new DevicesView();
         BorrowView borrowView = new BorrowView();
-        StockView stockView = new StockView();
         MenuView menuView = new MenuView();
-        (menuView).executeMenu( (menuView).printMenu() );
-
         injectData();
+        (menuView).executeMenu( (menuView).printMenu() );
     }
 	
 }

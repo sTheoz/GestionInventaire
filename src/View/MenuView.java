@@ -3,7 +3,8 @@ package src.View;
 import java.util.Scanner;
 
 public class MenuView {
-    String term_result = new String();
+    private BorrowView borrowView = new BorrowView();
+    private String term_result = new String();
     
     public MenuView(){
     }
@@ -27,6 +28,7 @@ public class MenuView {
         System.out.println("\t4.2 : Lieu de stockage");
         System.out.println("\t4.3 : Emprunt");
         System.out.println("\t4.4 : Utilisateur");
+        System.out.println("\t5 : Quitter");
         while(true){
             try {
                 Scanner input_scanner = new Scanner(System.in);
@@ -54,16 +56,16 @@ public class MenuView {
                 System.out.println(action);
                 break;
             case "2.1" :
-                System.out.println(action);
+                borrowView.printAllBorrows();
                 break;
             case "2.2" :
-                System.out.println(action);
+                borrowView.printBorrowsByJusitification("Justification à passer");
                 break;
             case "2.3" :
-                System.out.println(action);
+                borrowView.printBorrowsByUser(102);
                 break;
             case "2.4" :
-                System.out.println(action);
+                borrowView.printBorrowsInLate();
                 break;
             case "3.1" :
                 System.out.println(action);
@@ -79,6 +81,9 @@ public class MenuView {
                 break;
             case "4.4" :
                 System.out.println(action);
+                break;
+            case "5" :
+                System.out.println("Quitter");
                 break;
         }
         return;

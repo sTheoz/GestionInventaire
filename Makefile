@@ -15,11 +15,11 @@ start : src/Start.java Models Controllers Views
 Models : $(DEVICES_DIR)Device.java $(DEVICES_DIR)PlayingRemote.java $(DEVICES_DIR)Headset.java $(DEVICES_DIR)Phone.java $(DEVICES_DIR)Sensor.java $(DEVICES_DIR)Tablet.java $(DEVICES_DIR)Webcam.java $(MODEL_DIR)User.java $(MODEL_DIR)Borrow.java
 		$(C) $(DEVICES_DIR)Device.java $(DEVICES_DIR)PlayingRemote.java $(DEVICES_DIR)Headset.java $(DEVICES_DIR)Phone.java $(DEVICES_DIR)Sensor.java $(DEVICES_DIR)Tablet.java $(DEVICES_DIR)Webcam.java $(MODEL_DIR)User.java $(MODEL_DIR)Borrow.java
 
-Controllers : $(CONTROLLERS_DIR)BorrowsController.java $(CONTROLLERS_DIR)DevicesController.java $(CONTROLLERS_DIR)StockController.java $(CONTROLLERS_DIR)UsersController.java
-		$(C) $(CONTROLLERS_DIR)BorrowsController.java $(CONTROLLERS_DIR)DevicesController.java $(CONTROLLERS_DIR)StockController.java $(CONTROLLERS_DIR)UsersController.java
+Controllers : $(CONTROLLERS_DIR)BorrowsController.java $(CONTROLLERS_DIR)DevicesController.java $(CONTROLLERS_DIR)UsersController.java
+		$(C) $(CONTROLLERS_DIR)BorrowsController.java $(CONTROLLERS_DIR)DevicesController.java $(CONTROLLERS_DIR)UsersController.java
 
-Views : $(VIEW_DIR)BorrowView.java $(VIEW_DIR)DevicesView.java $(VIEW_DIR)StockView.java $(VIEW_DIR)MenuView.java
-		$(C) $(VIEW_DIR)BorrowView.java $(VIEW_DIR)DevicesView.java $(VIEW_DIR)StockView.java $(VIEW_DIR)MenuView.java
+Views : $(VIEW_DIR)BorrowView.java $(VIEW_DIR)DevicesView.java $(VIEW_DIR)MenuView.java
+		$(C) $(VIEW_DIR)BorrowView.java $(VIEW_DIR)DevicesView.java $(VIEW_DIR)MenuView.java
 
 
 play: start
