@@ -8,25 +8,19 @@ public class Phone extends Device{
 	double size ; 
 	
 	
-	public Phone(){
-		super();
-		this.systemExp = SE.NA;
-		this.size = 0.0;
-	}
-	
 	public Phone (String ref, String name, String brand, double price, SE se, double sz, State st, String location){
 		super(ref, name, brand, price, st, location);
-		systemExp = se ; 
-		size = sz ;
+		this.systemExp = se ; 
+		this.size = sz ;
 	}
 	
 	
 	public void setSystemExp(SE se){
-		systemExp =se ; 	
+		this.systemExp = se ; 	
 	}
 	
 	public void setSize(double sz){
-		size =sz ; 		
+		this.size =sz ; 		
 	}
 	
 	public double getSize(){

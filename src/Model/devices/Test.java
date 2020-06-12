@@ -8,6 +8,6 @@ public class Test {
         System.out.println(d.toString());
         p = (Phone) d;
         System.out.println(p.getSystemExp());
-        System.out.println(Stock.getInstance().getInventory());
+        System.out.println(Stock.getInstance(0, 0).getInventory());
     }
 }

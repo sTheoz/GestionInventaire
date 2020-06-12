@@ -42,10 +42,6 @@ public class People {
         this.address = a;
     }
 
-    public void display(){
-        System.out.println("I'm "+ this.getName() + " at " + this.getAddress());
-    }
-
     public void setFName(String fn){
         this.firstName = fn;
     }

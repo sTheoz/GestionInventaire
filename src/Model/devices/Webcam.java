@@ -6,12 +6,6 @@ public class Webcam extends Device{
 	
 	private Resolution res ; 
 	
-	
-	public Webcam(){
-		super();
-		this.res = Resolution.NA;
-	}
-	
 	public Webcam (String ref, String name, String brand, double price, Resolution rs, State st, String location){
 		super(ref, name, brand, price, st, location);
 		res = rs ;

@@ -6,19 +6,19 @@ public abstract class Device {
 	
 	public enum State{OK, KO, INCIDENT, GOOD, BAD, NEW, NA}
 
-	protected String reference ; 
-	protected String name ; 
-	protected String brand ;
-	protected double price ;
-	protected State state;
-	protected int id;
-	protected String location;
-	protected People accountable;
-	protected boolean available;
+	private String reference ; 
+	private String name ; 
+	private String brand ;
+	private double price ;
+	private State state;
+	private int id;
+	private String location;
+	private People accountable;
+	private boolean available;
 
 	public Device(String ref, String name, String brand, double price, State st, String location){
 		super();
-		Stock s = Stock.getInstance();
+		Stock s = Stock.getInstance(0, 0);
 		this.id = s.getId();
 		this.reference = ref ;
 		this.name = name ;
@@ -30,14 +30,8 @@ public abstract class Device {
 		s.addDevice(this);
 	}
 
-	public Device(){
-		super();
-		this.state = State.NEW;
-		Stock s = Stock.getInstance();
-		this.id = s.getId();
-		this.location = "Storage";
-		this.available = true;
-		s.addDevice(this);
+	public People getAccountable(){
+		return this.accountable;
 	}
 
 	public String getLocation(){

@@ -9,12 +9,12 @@ public class Stock {
     private int numberElement;
     private ArrayList<Device> inventory;
 
-    private Stock(){
+   /* private Stock(){
         super();
         id = 0;
         this.numberElement = 0;
         this.inventory = new ArrayList<Device>();
-    }
+    }*/
 
     private Stock(int id, int nbEle){
         super();
@@ -28,13 +28,13 @@ public class Stock {
     private static Stock INSTANCE = null;
      
     /** Point d'accès pour l'instance unique du Stock */
-    public static Stock getInstance()
+   /* public static Stock getInstance()
     {           
         if (INSTANCE == null)
         {   INSTANCE = new Stock(); 
         }
         return INSTANCE;
-    }
+    }*/
 
     public static Stock getInstance(int id, int nbEle)
     {           
