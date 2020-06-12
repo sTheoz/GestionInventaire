@@ -1,6 +1,6 @@
 package src.Model.devices;
 
-public class Telephone extends Devices{
+public class Phone extends Device{
 	
 	public enum SE{Android, iOs, Windows, NA};
 	
@@ -8,13 +8,13 @@ public class Telephone extends Devices{
 	double size ; 
 	
 	
-	public Telephone(){
+	public Phone(){
 		super();
 		this.systemExp = SE.NA;
 		this.size = 0.0;
 	}
 	
-	public Telephone (String ref, String name, String brand, double price, SE se, double sz, State st){
+	public Phone (String ref, String name, String brand, double price, SE se, double sz, State st){
 		super(ref, name, brand, price, st);
 		systemExp = se ; 
 		size = sz ;

@@ -1,6 +1,6 @@
 package src.Model.devices;
 
-public class GameController extends Devices{
+public class GameController extends Device{
 	
 	public GameController(){
 		super();

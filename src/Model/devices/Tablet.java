@@ -1,6 +1,6 @@
 package src.Model.devices;
 
-public class Tablet extends Telephone{
+public class Tablet extends Phone{
 
 	public Tablet(){
 		super();

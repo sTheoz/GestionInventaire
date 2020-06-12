@@ -1,6 +1,6 @@
 package src.Model.devices;
 
-public class Headset extends Devices{
+public class Headset extends Device{
 	
 	//1 = VR headset - 0 = headset
 	private int vr;

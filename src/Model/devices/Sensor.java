@@ -1,6 +1,6 @@
 package src.Model.devices;
 
-public class Sensor extends Devices{
+public class Sensor extends Device{
 	
 	public Sensor(){
 		super();

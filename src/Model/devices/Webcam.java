@@ -1,6 +1,6 @@
 package src.Model.devices;
 
-public class Webcam extends Devices{
+public class Webcam extends Device{
 
 	public enum Resolution{LOW, MEDIUM, HIGH, NA};  
 	
