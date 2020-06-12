@@ -1,6 +1,8 @@
-package src.Model.people;
+package src.Model;
 
-public class People {
+import src.Controller.UsersController;
+
+public class User {
     
     private String name;
     private String firstName;
@@ -8,13 +10,13 @@ public class People {
     private String phoneNumber;
     private String mail;
 
-    public People(String firstName, String name, String addr, String phoneNumber, String mail){
+    public User(String firstName, String name, String addr, String phoneNumber, String mail){
         this.firstName = name;
         this.name = name;
         this.address = addr;
         this.phoneNumber = phoneNumber;
         this.mail = mail;
-        Directory d = Directory.getInstance();
+        UsersController d = UsersController.getInstance();
         d.addUser(this);
     }
 

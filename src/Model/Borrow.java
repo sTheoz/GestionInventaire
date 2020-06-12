@@ -2,7 +2,6 @@ package src.Model;
 
 import java.sql.Date;
 import java.util.ArrayList;
-import src.Model.people.People;
 import src.Model.devices.Device;
 
 public class Borrow {
@@ -11,9 +10,9 @@ public class Borrow {
     private Date dateEndBorrow;
     private String justification;
     private ArrayList<Device> devices;
-    private People borrower;
+    private User borrower;
 
-    public Borrow(Date date, Date endBorrow, String justif, People borrower){
+    public Borrow(Date date, Date endBorrow, String justif, User borrower){
         super();
         this.dateBorrow = date;
         this.justification = justif;
@@ -34,7 +33,7 @@ public class Borrow {
         return justification;
     }
 
-    public People getBorrower(){
+    public User getBorrower(){
         return borrower;
     }
 

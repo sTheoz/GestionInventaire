@@ -1,6 +1,6 @@
 package src.Model.devices;
 
-import src.Model.people.People;
+import src.Model.User;
 
 public abstract class Device {
 	
@@ -13,7 +13,7 @@ public abstract class Device {
 	private State state;
 	private int id;
 	private String location;
-	private People accountable;
+	private User accountable;
 	private boolean available;
 
 	public Device(String ref, String name, String brand, double price, State st, String location){
@@ -30,7 +30,7 @@ public abstract class Device {
 		s.addDevice(this);
 	}
 
-	public People getAccountable(){
+	public User getAccountable(){
 		return this.accountable;
 	}
 
@@ -85,7 +85,7 @@ public abstract class Device {
 		price = prix; 		
 	}
 
-	public void setAccountable(People p){
+	public void setAccountable(User p){
 		this.accountable = p;
 	}
 
