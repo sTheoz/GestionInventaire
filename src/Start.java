@@ -1,25 +1,22 @@
 package src;
 
-import src.Controller.DevicesController;
-import src.Controller.BorrowsController;
-import src.Controller.StockController;
-import src.View.DevicesView;
-import src.View.BorrowView;
-import src.View.StockView;
+import src.Controller.*;
+import src.View.*;
 
 public class Start {
-    DevicesController devicesController = DevicesController.getInstance();
-    BorrowsController borrowsController = BorrowsController.getInstance();
-    StockController stockController = new StockController();
-    StockView stockView = new StockView();
-    DevicesView devicesView = new DevicesView();
-    BorrowView borrowView = new BorrowView();
 	
     public static void injectData(){
         System.out.println("================= DATA INJECTION =================");
     }
 
     public static void main(String[] args){
+        StockController stockController = new StockController();
+        DevicesView devicesView = new DevicesView();
+        BorrowView borrowView = new BorrowView();
+        StockView stockView = new StockView();
+        MenuView menuView = new MenuView();
+        (menuView).executeMenu( (menuView).printMenu() );
+
         injectData();
     }
 	

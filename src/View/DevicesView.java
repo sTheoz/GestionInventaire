@@ -5,6 +5,9 @@ import src.Controller.DevicesController;
 public class DevicesView {
 	
     public DevicesView(){
+    }
+
+    private void printDevices(){
         System.out.println("Voici la liste de vos matériels :");
     }
 

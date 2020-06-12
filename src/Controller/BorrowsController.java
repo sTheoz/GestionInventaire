@@ -9,7 +9,7 @@ public class BorrowsController {
 
     private ArrayList<Borrow> borrows;
 	
-    private BorrowsController(){
+    public BorrowsController(){
         borrows = new ArrayList<Borrow>();
     }
     
@@ -67,8 +67,8 @@ public class BorrowsController {
     }
 
      /** Instance unique non préinitialisée */
-     private static BorrowsController INSTANCE = null;
-     
+    private static BorrowsController INSTANCE = null;
+    
      /** Point d'accès pour l'instance unique du Stock */
     public static BorrowsController getInstance(){           
         if (INSTANCE == null){ 

@@ -25,7 +25,7 @@ public class DevicesController {
         }
         return INSTANCE;
     }
-	
+
     private DevicesController(int id, int nbEle){
         this.id = id;
         this.numberElement = nbEle;

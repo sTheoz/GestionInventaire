@@ -5,9 +5,12 @@ import src.Controller.BorrowsController;
 public class BorrowView {
 	
     public BorrowView(){
-        System.out.println("Voici la liste de vos emprunts :");
     }
 
+    private void printBorrows(){
+        System.out.println("Voici la liste de vos emprunts :");
+    }
+	
     public void printAllBorrows(){
         BorrowsController bc = BorrowsController.getInstance();
         System.out.println(bc.toStringBorrows(bc.getBorrows()));
