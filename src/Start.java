@@ -9,7 +9,7 @@ import src.View.StockView;
 
 public class Start {
     DevicesController devicesController = new DevicesController();
-    BorrowsController borrowsController = new BorrowsController();
+    BorrowsController borrowsController = BorrowsController.getInstance();
     StockController stockController = new StockController();
     StockView stockView = new StockView();
     DevicesView devicesView = new DevicesView();

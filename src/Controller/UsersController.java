@@ -23,8 +23,8 @@ public class UsersController {
         return INSTANCE;
     }
 
-    public void addUser(User p){
-        users.add(p);
+    public void addUser(String firstName, String name, String addr, String phoneNumber, String mail){
+        users.add(new User(firstName, name, addr, phoneNumber, mail));
     }
 
     public void removeUser(User p){
