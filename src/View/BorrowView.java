@@ -16,6 +16,11 @@ public class BorrowView {
         System.out.println(bc.toStringBorrows(bc.getBorrows()));
     }
 
+    public void printBorrowsByUser(int  id){
+        BorrowsController bc = BorrowsController.getInstance();
+        System.out.println(bc.toStringBorrowsByUser(bc.getBorrows(), id));
+    }
+
     public void printBorrowsInLate(){
         BorrowsController bc = BorrowsController.getInstance();
         System.out.println(bc.toStringBorrowsInLate(bc.getBorrows()));

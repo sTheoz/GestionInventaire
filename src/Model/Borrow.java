@@ -42,6 +42,10 @@ public class Borrow {
         return borrower;
     }
 
+    public int getIDBorrower(){
+        return borrower.getID();
+    }
+
     public void setEndBorrow(Date end){
         this.dateEndBorrow = end;
     }

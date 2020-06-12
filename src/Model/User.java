@@ -7,13 +7,19 @@ public class User {
     private String address;
     private String phoneNumber;
     private String mail;
+    private int id;
 
-    public User(String firstName, String name, String addr, String phoneNumber, String mail){
+    public User(String firstName, String name, String addr, String phoneNumber, String mail, int id){
         this.firstName = name;
         this.name = name;
         this.address = addr;
         this.phoneNumber = phoneNumber;
         this.mail = mail;
+        this.id = id;
+    }
+
+    public int getID(){
+        return this.id;
     }
 
     public String getFirstName(){

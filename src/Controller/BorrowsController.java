@@ -26,13 +26,13 @@ public class BorrowsController {
         return str;
     }
 
-    public String toStringBorrowsByUser(ArrayList<Borrow> borrows, User u){
+    public String toStringBorrowsByUser(ArrayList<Borrow> borrows, int IDUser){
         String str = "";
         Iterator<Borrow> iter = borrows.iterator();
         Borrow b;
         while(iter.hasNext()){
             b = iter.next();
-            if(b.getBorrower() == u){
+            if(b.getIDBorrower() == IDUser){
                 str += b.toString()+"\n";
             }
         }

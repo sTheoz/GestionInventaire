@@ -6,6 +6,7 @@ import src.Model.User;
 public class UsersController {
     
     private ArrayList<User> users;
+    private int id;
 
     private UsersController(){
         users = new ArrayList<User>();
@@ -24,11 +25,17 @@ public class UsersController {
     }
 
     public void addUser(String firstName, String name, String addr, String phoneNumber, String mail){
-        users.add(new User(firstName, name, addr, phoneNumber, mail));
+        users.add(new User(firstName, name, addr, phoneNumber, mail, getId()));
     }
 
     public void removeUser(User p){
         users.remove(p);
+    }
+
+    public int getId(){
+        int idR = this.id;
+        this.id++;
+        return idR;
     }
 
     public ArrayList<User> getUsers(){
