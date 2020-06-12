@@ -1,7 +1,6 @@
 package src.Controller;
 
 import src.Model.*;
-import src.Model.devices.Device;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;

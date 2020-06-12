@@ -2,6 +2,10 @@ package src.Controller;
 
 import src.Model.devices.*;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.List;
+import java.util.Iterator;
 
 public class DevicesController {
 
@@ -27,6 +31,24 @@ public class DevicesController {
         this.numberElement = nbEle;
         this.inventory = new ArrayList<Device>();
         System.out.println("Bonjour DevicesController");
+    }
+
+    public String toStringLocation(ArrayList<Device> devices){
+        String str = "";
+        ArrayList<String> locations = new ArrayList<String>();
+        Iterator<Device> iter = devices.iterator();
+        Device b;
+        while(iter.hasNext()){
+            b = iter.next();
+            locations.add(b.getLocation());
+        }
+        Set<String> mySet = new HashSet<String>(locations);
+        List<String> l2 = new ArrayList<String>(mySet);
+        Iterator<String> iter2 = l2.iterator();
+        while(iter2.hasNext()){
+            str += iter2.next();
+        }
+        return str;
     }
 
     public int getId(){
