@@ -1,7 +1,5 @@
 package src.Model;
 
-import src.Controller.UsersController;
-
 public class User {
     
     private String name;
@@ -16,8 +14,6 @@ public class User {
         this.address = addr;
         this.phoneNumber = phoneNumber;
         this.mail = mail;
-        UsersController d = UsersController.getInstance();
-        d.addUser(this);
     }
 
     public String getFirstName(){

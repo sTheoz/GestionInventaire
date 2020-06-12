@@ -1,6 +1,6 @@
 package src.Controller;
 
-import src.Model.*;
+import src.Model.Borrow;
 import java.util.ArrayList;
 
 public class BorrowsController {
