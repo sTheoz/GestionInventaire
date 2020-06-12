@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Stock {
 
+    //ID available for futur device
     private int id;
     private int numberElement;
     private ArrayList<Device> inventory;
@@ -47,6 +48,10 @@ public class Stock {
         int idR = this.id;
         this.id++;
         return idR;
+    }
+
+    public ArrayList<Device> getInventory(){
+        return inventory;
     }
 
     private void incrementStock(){

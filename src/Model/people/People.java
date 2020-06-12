@@ -7,7 +7,6 @@ public class People {
     private String address;
     private String phoneNumber;
     private String mail;
-    private int id;
 
     public People(String firstName, String name, String addr, String phoneNumber, String mail){
         this.firstName = name;
@@ -15,6 +14,8 @@ public class People {
         this.address = addr;
         this.phoneNumber = phoneNumber;
         this.mail = mail;
+        Directory d = Directory.getInstance();
+        d.addUser(this);
     }
 
     public String getFirstName(){
@@ -37,16 +38,12 @@ public class People {
         return this.address;
     }
 
-    public int getId(){
-        return this.id;
-    }
-
     public void setAddress(String a){
         this.address = a;
     }
 
     public void display(){
-        System.out.println("I'm "+ this.getName() + " at " + this.getAddress() + " with ID " + this.getId());
+        System.out.println("I'm "+ this.getName() + " at " + this.getAddress());
     }
 
     public void setFName(String fn){

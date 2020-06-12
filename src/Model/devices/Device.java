@@ -14,6 +14,7 @@ public abstract class Device {
 	protected int id;
 	protected String location;
 	protected People accountable;
+	protected boolean available;
 
 	public Device(String ref, String name, String brand, double price, State st, String location){
 		super();
@@ -25,6 +26,7 @@ public abstract class Device {
 		this.price = price ;
 		this.state = st;
 		this.location = location;
+		this.available = true;
 		s.addDevice(this);
 	}
 
@@ -34,6 +36,7 @@ public abstract class Device {
 		Stock s = Stock.getInstance();
 		this.id = s.getId();
 		this.location = "Storage";
+		this.available = true;
 		s.addDevice(this);
 	}
 
@@ -59,6 +62,10 @@ public abstract class Device {
 	
 	public double getPrice(){
 		return price; 
+	}
+
+	public boolean isAvailable(){
+		return available;
 	}
 
 	public void setLocation(String l){
@@ -90,5 +97,13 @@ public abstract class Device {
 
 	public String toString(){
 		return "[" + id + "] " + brand + " " + name + " " + price + "€ [" + state + "]";
-	}	
+	}
+
+	public void setAvailable(){
+		this.available = true;
+	}
+
+	public void setUnavailable(){
+		this.available = false;
+	}
 }
