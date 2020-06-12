@@ -1,6 +1,4 @@
-package src.devices;
-
-
+package src.Model.devices;
 
 public class Webcam extends Devices{
 

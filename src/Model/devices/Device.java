@@ -1,6 +1,6 @@
-package src.devices;
+package src.Model.devices;
 
-public abstract class Devices {
+public abstract class Device {
 	
 	public enum State{OK, KO, INCIDENT, GOOD, BAD, NEW, NA}
 
@@ -11,7 +11,7 @@ public abstract class Devices {
 	protected State state;
 	protected int id;
 
-	public Devices(String ref, String name, String brand, double price, State st){
+	public Device(String ref, String name, String brand, double price, State st){
 		super();
 		Stock s = Stock.getInstance();
 		this.id = s.getId();
@@ -22,7 +22,7 @@ public abstract class Devices {
 		this.state = st;
 	}
 
-	public Devices(){
+	public Device(){
 		super();
 		this.state = State.NEW;
 		Stock s = Stock.getInstance();

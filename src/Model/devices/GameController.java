@@ -1,4 +1,4 @@
-package src.devices;
+package src.Model.devices;
 
 public class GameController extends Devices{
 	
