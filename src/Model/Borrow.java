@@ -21,6 +21,11 @@ public class Borrow {
         this.borrower = borrower;
     }
 
+    @Override
+    public String toString(){
+        return borrower + " borrow " + devices.toString() + " for " + justification + " since " + dateBorrow + " to " + dateEndBorrow;
+    }
+
     public Date getDate(){
         return dateBorrow;
     }

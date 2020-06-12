@@ -12,8 +12,8 @@ DEVICES_DIR = src/Model/devices/
 start : src/Start.java Models Controllers Views
 		$(C) src/Start.java
 
-Models : $(DEVICES_DIR)Device.java $(DEVICES_DIR)PlayingRemote.java $(DEVICES_DIR)Headset.java $(DEVICES_DIR)Phone.java $(DEVICES_DIR)Sensor.java $(DEVICES_DIR)Stock.java $(DEVICES_DIR)Tablet.java $(DEVICES_DIR)Webcam.java $(MODEL_DIR)User.java $(MODEL_DIR)Borrow.java
-		$(C) $(DEVICES_DIR)Device.java $(DEVICES_DIR)PlayingRemote.java $(DEVICES_DIR)Headset.java $(DEVICES_DIR)Phone.java $(DEVICES_DIR)Sensor.java $(DEVICES_DIR)Stock.java $(DEVICES_DIR)Tablet.java $(DEVICES_DIR)Webcam.java $(MODEL_DIR)User.java $(MODEL_DIR)Borrow.java
+Models : $(DEVICES_DIR)Device.java $(DEVICES_DIR)PlayingRemote.java $(DEVICES_DIR)Headset.java $(DEVICES_DIR)Phone.java $(DEVICES_DIR)Sensor.java $(DEVICES_DIR)Tablet.java $(DEVICES_DIR)Webcam.java $(MODEL_DIR)User.java $(MODEL_DIR)Borrow.java
+		$(C) $(DEVICES_DIR)Device.java $(DEVICES_DIR)PlayingRemote.java $(DEVICES_DIR)Headset.java $(DEVICES_DIR)Phone.java $(DEVICES_DIR)Sensor.java $(DEVICES_DIR)Tablet.java $(DEVICES_DIR)Webcam.java $(MODEL_DIR)User.java $(MODEL_DIR)Borrow.java
 
 Controllers : $(CONTROLLERS_DIR)BorrowsController.java $(CONTROLLERS_DIR)DevicesController.java $(CONTROLLERS_DIR)StockController.java $(CONTROLLERS_DIR)UsersController.java
 		$(C) $(CONTROLLERS_DIR)BorrowsController.java $(CONTROLLERS_DIR)DevicesController.java $(CONTROLLERS_DIR)StockController.java $(CONTROLLERS_DIR)UsersController.java

@@ -10,8 +10,6 @@ public class Start {
     }
 
     public static void main(String[] args){
-        DevicesController devicesController = new DevicesController();
-        BorrowsController borrowsController = new BorrowsController();
         StockController stockController = new StockController();
         DevicesView devicesView = new DevicesView();
         BorrowView borrowView = new BorrowView();
