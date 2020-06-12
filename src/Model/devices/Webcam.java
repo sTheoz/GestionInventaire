@@ -6,8 +6,8 @@ public class Webcam extends Device{
 	
 	private Resolution res ; 
 	
-	public Webcam (String ref, String name, String brand, double price, Resolution rs, State st, String location){
-		super(ref, name, brand, price, st, location);
+	public Webcam (String ref, String name, String brand, double price, Resolution rs, State st, String location, Device.Type type, int id){
+		super(ref, name, brand, price, st, location, type, id);
 		res = rs ;
 	}
 	

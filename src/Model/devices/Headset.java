@@ -5,8 +5,8 @@ public class Headset extends Device{
 	//1 = VR headset - 0 = headset
 	private int vr;
 
-	public Headset (String ref, String name, String brand, double price, int vr, State st, String location){
-		super(ref, name, brand, price, st, location);
+	public Headset (String ref, String name, String brand, double price, int vr, State st, String location, Device.Type type, int id){
+		super(ref, name, brand, price, st, location, type, id);
 		this.vr = vr;
 	}
 	

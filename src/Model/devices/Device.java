@@ -5,6 +5,7 @@ import src.Model.User;
 public abstract class Device {
 	
 	public enum State{OK, KO, INCIDENT, GOOD, BAD, NEW, NA}
+	public enum Type{Phone, Webcam, Headset, Sensor, PlayingRemote, Tablet}
 
 	private String reference ; 
 	private String name ; 
@@ -15,11 +16,10 @@ public abstract class Device {
 	private String location;
 	private User accountable;
 	private boolean available;
+	private Type type;
 
-	public Device(String ref, String name, String brand, double price, State st, String location){
+	public Device(String ref, String name, String brand, double price, State st, String location, Type type, int id){
 		super();
-		Stock s = Stock.getInstance(0, 0);
-		this.id = s.getId();
 		this.reference = ref ;
 		this.name = name ;
 		this.brand = brand ;
@@ -27,7 +27,8 @@ public abstract class Device {
 		this.state = st;
 		this.location = location;
 		this.available = true;
-		s.addDevice(this);
+		this.type = type;
+		this.id = id;
 	}
 
 	public User getAccountable(){
@@ -56,6 +57,10 @@ public abstract class Device {
 	
 	public double getPrice(){
 		return price; 
+	}
+
+	public Type getType(){
+		return this.type;
 	}
 
 	public boolean isAvailable(){

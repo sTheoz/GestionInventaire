@@ -8,8 +8,8 @@ public class Phone extends Device{
 	double size ; 
 	
 	
-	public Phone (String ref, String name, String brand, double price, SE se, double sz, State st, String location){
-		super(ref, name, brand, price, st, location);
+	public Phone (String ref, String name, String brand, double price, SE se, double sz, State st, String location, Device.Type type, int id){
+		super(ref, name, brand, price, st, location, type, id);
 		this.systemExp = se ; 
 		this.size = sz ;
 	}

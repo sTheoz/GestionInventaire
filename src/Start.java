@@ -8,7 +8,7 @@ import src.View.BorrowView;
 import src.View.StockView;
 
 public class Start {
-    DevicesController devicesController = new DevicesController();
+    DevicesController devicesController = DevicesController.getInstance();
     BorrowsController borrowsController = BorrowsController.getInstance();
     StockController stockController = new StockController();
     StockView stockView = new StockView();
