@@ -6,7 +6,7 @@ import src.Model.Storage;
 public abstract class Device {
 	
 	public enum State{OK, KO, INCIDENT, GOOD, BAD, NEW, NA}
-	public enum Type{Phone, Webcam, Headset, Sensor, PlayingRemote, Tablet}
+	public enum Type{Phone, Webcam, Headset, Sensor, PlayingRemote, Tablet, NA}
 
 	private String reference ; 
 	private String name ; 

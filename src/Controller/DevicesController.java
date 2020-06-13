@@ -27,6 +27,11 @@ public class DevicesController {
         return INSTANCE;
     }
 
+    
+    public ArrayList<Device> getDevices(){
+        return this.inventory;
+    }
+
     private DevicesController(int id, int nbEle){
         this.id = id;
         this.numberElement = nbEle;
