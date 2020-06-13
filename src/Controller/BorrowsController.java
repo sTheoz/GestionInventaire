@@ -1,6 +1,7 @@
 package src.Controller;
 
 import src.Model.*;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -8,7 +9,7 @@ import java.util.Iterator;
 public class BorrowsController {
 
     private ArrayList<Borrow> borrows;
-	
+    
     public BorrowsController(){
         borrows = new ArrayList<Borrow>();
     }
@@ -84,4 +85,5 @@ public class BorrowsController {
     public void removeBorrow(Borrow b){
         borrows.remove(b);
     }
+
 }

@@ -35,8 +35,7 @@ public class MenuView {
         while(true){
             try {
                 Scanner input_scanner = new Scanner(System.in);
-                this.term_result = (input_scanner.nextLine());
-                input_scanner.close();
+                this.term_result = (input_scanner.next());
                 return this.term_result;
             } catch(NumberFormatException ne) {
                 System.out.println("Veuillez suivre les instructions du menu : "+ne);
@@ -99,27 +98,21 @@ public class MenuView {
         while(true){
             try {
                 Scanner input_scanner = new Scanner(System.in);
-                switch( input_scanner.nextLine() ){
+                String res = input_scanner.nextLine();
+                switch( res ){
                     case "Phone":
-                        input_scanner.close();
                         return Device.Type.Phone;
                     case "Webcam":
-                        input_scanner.close();
                         return Device.Type.Webcam;
                     case "Headset":
-                        input_scanner.close();
                         return Device.Type.Headset;
                     case "Sensor":
-                        input_scanner.close();
                         return Device.Type.Sensor;
                     case "PlayingRemote":
-                        input_scanner.close();
                         return Device.Type.PlayingRemote;
                     case "Tablet":
-                        input_scanner.close();
                         return Device.Type.Tablet;
                     default:
-                        input_scanner.close();
                         return Device.Type.NA;
                 }
             } catch(NumberFormatException ne) {
