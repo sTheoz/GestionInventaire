@@ -7,10 +7,10 @@ import src.Model.devices.Device;
 public class MenuView {
     private BorrowView borrowView = new BorrowView();
     private DevicesView deviceView = new DevicesView();
-    private String term_result = new String();
+    private String term_result;
+    private Scanner input_scanner = new Scanner(System.in);
     
-    public MenuView(){
-    }
+    public MenuView(){}
 
     public String printMenu(){
         System.out.println("=== MENU ===");
@@ -33,14 +33,10 @@ public class MenuView {
         System.out.println("\t4.4 : Utilisateur");
         System.out.println("\t5 : Quitter");
         while(true){
-            try {
-                Scanner input_scanner = new Scanner(System.in);
-                this.term_result = (input_scanner.nextLine());
-                input_scanner.close();
-                return this.term_result;
-            } catch(NumberFormatException ne) {
-                System.out.println("Veuillez suivre les instructions du menu : "+ne);
-            }
+            Scanner input_scanner = new Scanner(System.in);
+            this.term_result = (input_scanner.nextLine());
+            //Pas d'inquiétude, le scanner est clos en fin de programme
+            return this.term_result;
         }
     }
 
@@ -86,6 +82,7 @@ public class MenuView {
                 System.out.println(action);
                 break;
             case "5" :
+                (this.input_scanner).close();
                 System.out.println("Quitter");
                 break;
             default:
@@ -97,35 +94,22 @@ public class MenuView {
     public Device.Type getTypeInput(){
         System.out.println("Rentrez le type souhaité : Phone, Webcam, Headset, Sensor, PlayingRemote, Tablet, NA");
         while(true){
-            try {
-                Scanner input_scanner = new Scanner(System.in);
-                switch( input_scanner.nextLine() ){
-                    case "Phone":
-                        input_scanner.close();
-                        return Device.Type.Phone;
-                    case "Webcam":
-                        input_scanner.close();
-                        return Device.Type.Webcam;
-                    case "Headset":
-                        input_scanner.close();
-                        return Device.Type.Headset;
-                    case "Sensor":
-                        input_scanner.close();
-                        return Device.Type.Sensor;
-                    case "PlayingRemote":
-                        input_scanner.close();
-                        return Device.Type.PlayingRemote;
-                    case "Tablet":
-                        input_scanner.close();
-                        return Device.Type.Tablet;
-                    default:
-                        input_scanner.close();
-                        return Device.Type.NA;
-                }
-            } catch(NumberFormatException ne) {
-                System.out.println("Veuillez suivre les instructions du menu : "+ne);
+            switch((this.input_scanner).nextLine()){
+                case "Phone":
+                    return Device.Type.Phone;
+                case "Webcam":
+                    return Device.Type.Webcam;
+                case "Headset":
+                    return Device.Type.Headset;
+                case "Sensor":
+                    return Device.Type.Sensor;
+                case "PlayingRemote":
+                    return Device.Type.PlayingRemote;
+                case "Tablet":
+                    return Device.Type.Tablet;
+                default:
+                    return Device.Type.NA;
             }
         }
     }
-	
 }
