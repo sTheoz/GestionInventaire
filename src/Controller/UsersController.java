@@ -9,6 +9,7 @@ public class UsersController {
     private int id;
 
     private UsersController(){
+        this.id = 0;
         users = new ArrayList<User>();
     }
 

@@ -1,5 +1,6 @@
 package src.Controller;
 
+import src.Model.Storage;
 import src.Model.devices.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -30,7 +31,48 @@ public class DevicesController {
         this.id = id;
         this.numberElement = nbEle;
         this.inventory = new ArrayList<Device>();
-        System.out.println("Bonjour DevicesController");
+    }
+
+    public String toStringDevices(ArrayList<Device> list){
+        String str = "";
+        Iterator<Device> iter = list.iterator();
+        while(iter.hasNext()){
+            str += iter.next().toString()+"\n";
+        }
+        return str;
+    }
+
+    public String toStringDevicesByType(ArrayList<Device> list, Device.Type t){
+        String str = "";
+        Iterator<Device> iter = list.iterator();
+        Device d;
+        while(iter.hasNext()){
+            d = iter.next();
+            if(d.getType() == t) str += d.toString()+"\n";
+        }
+        return str;
+    }
+
+    public String toStringAvailableDevices(ArrayList<Device> list){
+        String str = "";
+        Device d;
+        Iterator<Device> iter = list.iterator();
+        while(iter.hasNext()){
+            d = iter.next();
+            if(d.isAvailable()) str += d.toString()+"\n";
+        }
+        return str;
+    }
+
+    public String toStringNotAvailableDevices(ArrayList<Device> list){
+        String str = "";
+        Device d;
+        Iterator<Device> iter = list.iterator();
+        while(iter.hasNext()){
+            d = iter.next();
+            if(!d.isAvailable()) str += d.toString()+"\n";
+        }
+        return str;
     }
 
     public String toStringLocation(ArrayList<Device> devices){
@@ -40,7 +82,7 @@ public class DevicesController {
         Device b;
         while(iter.hasNext()){
             b = iter.next();
-            locations.add(b.getLocation());
+            locations.add(b.getLocation().getName());
         }
         Set<String> mySet = new HashSet<String>(locations);
         List<String> l2 = new ArrayList<String>(mySet);
@@ -78,42 +120,42 @@ public class DevicesController {
         decrementStock();
     }
 
-    public void addPhone(String ref, String name, String brand, double price, Phone.SE se, double sz, Device.State st, String location, int nb){
+    public void addPhone(String ref, String name, String brand, double price, Phone.SE se, double sz, Device.State st, Storage location, int nb){
         for(int i = 0; i < nb; i++){
             inventory.add(new Phone(ref, name, brand, price, se, sz, st, location, Device.Type.Phone, getId()));
             incrementStock();
         }
     }
 
-    public void addSensor(String ref, String name, String brand, double price, Device.State st, String location, int nb){
+    public void addSensor(String ref, String name, String brand, double price, Device.State st, Storage location, int nb){
         for(int i = 0; i < nb; i++){
             inventory.add(new Sensor(ref, name, brand, price, st, location, Device.Type.Sensor, getId()));
             incrementStock();
         }
     }
 
-    public void addHeadset(String ref, String name, String brand, double price, Device.State st, String location, int vr, int nb){
+    public void addHeadset(String ref, String name, String brand, double price, Device.State st, Storage location, int vr, int nb){
         for(int i = 0; i < nb; i++){
             inventory.add(new Headset(ref, name, brand, price, vr, st, location, Device.Type.Headset, getId()));
             incrementStock();
         }
     }
 
-    public void addPlayingRemote(String ref, String name, String brand, double price, Device.State st, String location, int nb){
+    public void addPlayingRemote(String ref, String name, String brand, double price, Device.State st, Storage location, int nb){
         for(int i = 0 ; i < nb ; i++){
             inventory.add(new PlayingRemote(ref, name, brand, price, st, location, Device.Type.PlayingRemote, getId()));
             incrementStock();
         }
     }
 
-    public void addWebcam(String ref, String name, String brand, double price, Webcam.Resolution rs, Device.State st, String location, int nb){
+    public void addWebcam(String ref, String name, String brand, double price, Webcam.Resolution rs, Device.State st, Storage location, int nb){
         for(int i = 0 ; i < nb ; i++){
             inventory.add(new Webcam(ref, name, brand, price, rs, st, location, Device.Type.Webcam, getId()));
             incrementStock();
         }
     }
 
-    public void addTablet(String ref, String nom, String marque, double prix, Phone.SE se, double sz, Device.State st, String location, int nb){
+    public void addTablet(String ref, String nom, String marque, double prix, Phone.SE se, double sz, Device.State st, Storage location, int nb){
 		for(int i = 0 ; i < nb ; i++){
             inventory.add(new Tablet(ref, nom, marque, prix, se, sz, st, location, Device.Type.Tablet, getId()));
             incrementStock();

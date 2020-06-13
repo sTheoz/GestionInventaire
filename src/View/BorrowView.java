@@ -3,31 +3,26 @@ package src.View;
 import src.Controller.BorrowsController;
 
 public class BorrowView {
+
+    private BorrowsController bc;
 	
     public BorrowView(){
-    }
-
-    private void printBorrows(){
-        System.out.println("Voici la liste de vos emprunts :");
+        this.bc = BorrowsController.getInstance();
     }
 	
     public void printAllBorrows(){
-        BorrowsController bc = BorrowsController.getInstance();
-        System.out.println(bc.toStringBorrows(bc.getBorrows()));
+        System.out.println(this.bc.toStringBorrows(this.bc.getBorrows()));
     }
 
     public void printBorrowsByUser(int  id){
-        BorrowsController bc = BorrowsController.getInstance();
-        System.out.println(bc.toStringBorrowsByUser(bc.getBorrows(), id));
+        System.out.println(this.bc.toStringBorrowsByUser(this.bc.getBorrows(), id));
     }
 
     public void printBorrowsInLate(){
-        BorrowsController bc = BorrowsController.getInstance();
-        System.out.println(bc.toStringBorrowsInLate(bc.getBorrows()));
+        System.out.println(this.bc.toStringBorrowsInLate(this.bc.getBorrows()));
     }
     
     public void printBorrowsByJusitification(String j){
-        BorrowsController bc = BorrowsController.getInstance();
-        System.out.println(bc.toStringBorrowsByJusitification(bc.getBorrows(), j));
+        System.out.println(this.bc.toStringBorrowsByJusitification(this.bc.getBorrows(), j));
     }
 }

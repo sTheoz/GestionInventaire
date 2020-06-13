@@ -1,6 +1,7 @@
 package src.Model.devices;
 
 import src.Model.User;
+import src.Model.Storage;
 
 public abstract class Device {
 	
@@ -13,12 +14,12 @@ public abstract class Device {
 	private double price ;
 	private State state;
 	private int id;
-	private String location;
+	private Storage location;
 	private User accountable;
 	private boolean available;
 	private Type type;
 
-	public Device(String ref, String name, String brand, double price, State st, String location, Type type, int id){
+	public Device(String ref, String name, String brand, double price, State st, Storage location, Type type, int id){
 		super();
 		this.reference = ref ;
 		this.name = name ;
@@ -35,7 +36,7 @@ public abstract class Device {
 		return this.accountable;
 	}
 
-	public String getLocation(){
+	public Storage getLocation(){
 		return this.location;
 	}
 
@@ -67,8 +68,8 @@ public abstract class Device {
 		return available;
 	}
 
-	public void setLocation(String l){
-		this.location = l;
+	public void setLocation(Storage s){
+		this.location = s;
 	}
 
 	public void setState(State st){

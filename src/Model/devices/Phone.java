@@ -1,5 +1,7 @@
 package src.Model.devices;
 
+import src.Model.Storage;
+
 public class Phone extends Device{
 	
 	public enum SE{Android, iOs, Windows, NA};
@@ -8,7 +10,7 @@ public class Phone extends Device{
 	double size ; 
 	
 	
-	public Phone (String ref, String name, String brand, double price, SE se, double sz, State st, String location, Device.Type type, int id){
+	public Phone (String ref, String name, String brand, double price, SE se, double sz, State st, Storage location, Device.Type type, int id){
 		super(ref, name, brand, price, st, location, type, id);
 		this.systemExp = se ; 
 		this.size = sz ;
