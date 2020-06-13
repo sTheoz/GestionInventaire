@@ -76,7 +76,7 @@ public class MenuView {
                 System.out.println(action);
                 break;
             case "4.3" :
-                System.out.println(action);
+                borrowView.addBorrow();
                 break;
             case "4.4" :
                 System.out.println(action);
@@ -84,6 +84,14 @@ public class MenuView {
             case "5" :
                 (this.input_scanner).close();
                 System.out.println("Quitter");
+                return -1;
+            case "6" :
+                System.out.println("Serialise");
+                borrowView.serialise();
+                break;
+            case "7" :
+            System.out.println("Deserialise");
+                borrowView.deserialise();
                 break;
             default:
                 return 1;

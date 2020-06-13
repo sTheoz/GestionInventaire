@@ -22,7 +22,8 @@ public class Start {
         BorrowView borrowView = new BorrowView();
         MenuView menuView = new MenuView();
         injectData();
-        (menuView).executeMenu( (menuView).printMenu() );
+        while((menuView).executeMenu( (menuView).printMenu() ) != -1);
+        //(menuView).executeMenu( (menuView).printMenu() );
     }
 	
 }

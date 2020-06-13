@@ -1,6 +1,8 @@
 package src.Model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable{
     
     private String name;
     private String firstName;
@@ -8,6 +10,8 @@ public class User {
     private String phoneNumber;
     private String mail;
     private int id;
+
+    private static final long serialVersionUID = 2L;
 
     public User(String firstName, String name, String addr, String phoneNumber, String mail, int id){
         this.firstName = name;

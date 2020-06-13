@@ -2,13 +2,15 @@ package src.Controller;
 
 import src.Model.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 
-public class BorrowsController {
+public class BorrowsController implements Serializable{
 
     private ArrayList<Borrow> borrows;
+    private static final long serialVersionUID = 15151515151515L;
     
     public BorrowsController(){
         borrows = new ArrayList<Borrow>();
