@@ -1,5 +1,6 @@
 package src.View;
 
+import java.io.File;
 import java.util.Scanner;
 
 import src.Controller.StorageController;
@@ -12,7 +13,14 @@ public class MenuView {
     private String term_result;
     private Scanner input_scanner = new Scanner(System.in);
     
-    public MenuView(){}
+    public MenuView(){
+        File bcf = new File("data/borrowsController.ser");
+        File dcf = new File("data/devicesController.ser");
+        File scf = new File("data/storageController.ser");
+        if(bcf.exists())borrowView.deserialise();
+        if(dcf.exists())deviceView.deserialise();
+        if(scf.exists())storageView.deserialise();
+    }
 
     public String printMenu(){
         System.out.println("=== MENU ===");
@@ -115,15 +123,20 @@ public class MenuView {
                 break;
             case "5" :
                 (this.input_scanner).close();
+                borrowView.serialise();
+                storageView.serialise();
+                deviceView.serialise();
                 System.out.println("Quitter");
                 return -1;
             case "6" :
                 System.out.println("Serialise");
                 borrowView.serialise();
+                storageView.serialise();
                 break;
             case "7" :
             System.out.println("Deserialise");
                 borrowView.deserialise();
+                storageView.deserialise();
                 break;
             default:
                 return 1;

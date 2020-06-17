@@ -5,6 +5,13 @@ import src.Controller.StorageController;
 import src.Model.devices.*;
 import src.Model.devices.Webcam.Resolution;
 import src.Model.*;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class DevicesView {
@@ -174,6 +181,35 @@ public class DevicesView {
     public void printStorageLocation(){
         System.out.println("All storages :");
         System.out.println(dc.toStringLocation(dc.getInventory()));
+    }
+
+    public void serialise(){
+        try{
+            File fichier =  new File("data/devicesController.ser") ;
+
+            // ouverture d'un flux sur un fichier
+            ObjectOutputStream oos =  new ObjectOutputStream(new FileOutputStream(fichier)) ;
+    
+            // sérialization de l'objet
+            oos.writeObject(dc);
+            oos.close();
+        }catch(IOException e){
+            System.err.println("Errorrrr 1");
+        }
+    }
+    public void deserialise(){
+        try{
+            File fichier =  new File("data/devicesController.ser") ;
+
+            // ouverture d'un flux sur un fichier
+            ObjectInputStream ois =  new ObjectInputStream(new FileInputStream(fichier)) ;
+                    
+            // désérialization de l'objet
+            dc = ((DevicesController) ois.readObject());
+            ois.close();
+        }catch(IOException|ClassNotFoundException e){
+            System.err.println("Errorrrr");
+        } 
     }
 	
 }

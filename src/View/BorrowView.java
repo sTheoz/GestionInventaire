@@ -5,9 +5,10 @@ import src.Model.User;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.util.ArrayList;
+import java.io.ObjectOutputStream;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
@@ -45,23 +46,30 @@ public class BorrowView {
     }
 
     public void serialise(){
-        ArrayList<Borrow> l = bc.getBorrows();
-        for(Borrow b : l){
-            b.serialise();
+        try{
+            File fichier =  new File("data/borrowsController.ser") ;
+
+            // ouverture d'un flux sur un fichier
+            ObjectOutputStream oos =  new ObjectOutputStream(new FileOutputStream(fichier)) ;
+    
+            // sérialization de l'objet
+            oos.writeObject(bc);
+            oos.close();
+        }catch(IOException e){
+            System.err.println("Errorrrr 1");
         }
     }
 
     public void deserialise(){
         try{
-            File fichier =  new File("data/borrowController1.ser") ;
+            File fichier =  new File("data/borrowsController.ser") ;
 
             // ouverture d'un flux sur un fichier
             ObjectInputStream ois =  new ObjectInputStream(new FileInputStream(fichier)) ;
                     
             // désérialization de l'objet
-            bc.addBorrow((Borrow) ois.readObject());
+            bc = (BorrowsController) ois.readObject();
             ois.close();
-            System.out.println(bc.toStringBorrows(bc.getBorrows())) ;
         }catch(IOException|ClassNotFoundException e){
             System.err.println("Errorrrr");
         }  
