@@ -2,18 +2,22 @@ package src.Controller;
 
 import src.Model.Storage;
 import src.Model.devices.*;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.List;
 import java.util.Iterator;
 
-public class DevicesController {
+public class DevicesController implements Serializable{
 
     //ID available for futur device
     private int id;
     private int numberElement;
     private ArrayList<Device> inventory;
+
+    private static final long serialVersionUID = 41L;
 
     /** Instance unique non préinitialisée */
     private static DevicesController INSTANCE = null;

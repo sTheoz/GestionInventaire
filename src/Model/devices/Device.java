@@ -1,12 +1,17 @@
 package src.Model.devices;
 
 import src.Model.User;
+
+import java.io.Serializable;
+
 import src.Model.Storage;
 
-public abstract class Device {
+public abstract class Device implements Serializable{
 	
 	public enum State{OK, KO, NEW, NA}
 	public enum Type{Phone, Webcam, Headset, Sensor, PlayingRemote, Tablet, NA}
+
+	private static final long serialVersionUID = 4L;
 
 	private String reference ; 
 	private String name ; 

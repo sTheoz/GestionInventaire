@@ -18,21 +18,27 @@ public class Borrow implements Serializable{
     private String justification;
     private ArrayList<Device> devices;
     private User borrower;
+    private int id;
 
     private static final long serialVersionUID = 1L;
 
-    public Borrow(GregorianCalendar date, GregorianCalendar endBorrow, String justif, User borrower){
+    public Borrow(GregorianCalendar date, GregorianCalendar endBorrow, String justif, User borrower, int id){
         super();
         this.dateBorrow = date;
         this.justification = justif;
         this.dateEndBorrow = endBorrow;
         devices = new ArrayList<Device>();
         this.borrower = borrower;
+        this.id = id;
     }
 
     @Override
     public String toString(){
         return borrower + " borrow " + devices.toString() + " for " + justification + " since " + getDate() + " to " + getEndBorrow();
+    }
+
+    public int getID(){
+        return this.id;
     }
 
     public String getDate(){
@@ -85,7 +91,7 @@ public class Borrow implements Serializable{
     
             // sérialization de l'objet
             oos.writeObject(this) ;
-
+            oos.close();
         }catch(IOException e){
             System.err.println("Errorrrr 1");
         }  

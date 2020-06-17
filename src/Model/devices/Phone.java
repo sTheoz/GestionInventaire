@@ -9,7 +9,8 @@ public class Phone extends Device{
 	private SE systemExp ; 
 	double size ; 
 	
-	
+	private static final long serialVersionUID = 412L;
+
 	public Phone (String ref, String name, String brand, double price, SE se, double sz, State st, Storage location, Device.Type type, int id){
 		super(ref, name, brand, price, st, location, type, id);
 		this.systemExp = se ; 

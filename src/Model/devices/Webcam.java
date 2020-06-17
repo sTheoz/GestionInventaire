@@ -5,6 +5,8 @@ import src.Model.Storage;
 public class Webcam extends Device{
 
 	public enum Resolution{LOW, MEDIUM, HIGH, NA};  
+
+	private static final long serialVersionUID = 416L;
 	
 	private Resolution res ; 
 	

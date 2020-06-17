@@ -1,9 +1,13 @@
 package src.Model;
 
-public class Storage {
+import java.io.Serializable;
+
+public class Storage implements Serializable{
     private int id;
     private String name;
     private String location;
+
+    private static final long serialVersionUID = 3L;
 
     public Storage(String name, String locate, int id){
         this.name = name;

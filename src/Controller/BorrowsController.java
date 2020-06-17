@@ -4,16 +4,17 @@ import src.Model.*;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 
 public class BorrowsController implements Serializable{
 
     private ArrayList<Borrow> borrows;
     private static final long serialVersionUID = 15151515151515L;
+    private int id;
     
     public BorrowsController(){
         borrows = new ArrayList<Borrow>();
+        this.id = 0;
     }
     
     public ArrayList<Borrow> getBorrows(){
@@ -57,15 +58,15 @@ public class BorrowsController implements Serializable{
 
     public String toStringBorrowsInLate(ArrayList<Borrow> borrows){
         String str = "";
-        Iterator<Borrow> iter = borrows.iterator();
+        /*Iterator<Borrow> iter = borrows.iterator();
         Borrow b;
         Date d = new Date(System.currentTimeMillis());
         while(iter.hasNext()){
             b = iter.next();
-            /*if(b.getEndBorrow() ){
+            if(b.getEndBorrow() ){
                 str += b.toString()+"\n";
-            }*/
-        }
+            }
+        }*/
         return str;
     }
 
@@ -86,6 +87,12 @@ public class BorrowsController implements Serializable{
 
     public void removeBorrow(Borrow b){
         borrows.remove(b);
+    }
+
+    public int getId(){
+        int idR = this.id;
+        this.id++;
+        return idR;
     }
 
 }

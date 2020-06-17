@@ -7,6 +7,8 @@ public class Headset extends Device{
 	//1 = VR headset - 0 = headset
 	private int vr;
 
+	private static final long serialVersionUID = 411L;
+
 	public Headset (String ref, String name, String brand, double price, int vr, State st, Storage location, Device.Type type, int id){
 		super(ref, name, brand, price, st, location, type, id);
 		this.vr = vr;

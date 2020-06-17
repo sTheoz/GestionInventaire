@@ -60,21 +60,16 @@ public class BorrowView {
                     
             // désérialization de l'objet
             bc.addBorrow((Borrow) ois.readObject());
+            ois.close();
             System.out.println(bc.toStringBorrows(bc.getBorrows())) ;
         }catch(IOException|ClassNotFoundException e){
             System.err.println("Errorrrr");
         }  
     }
 
-    public void addBorrow(){
-        User u = new User("Jean", "Paul", "addr", "0600505", "test@gmail.com", 2);
-        Borrow b = new Borrow(new GregorianCalendar(), new GregorianCalendar(), "Test", u);
-        bc.addBorrow(b);
-    }
-
     public void addBorrow(GregorianCalendar expiration, String justif, User u){
         //User u = new User("Jean", "Paul", "addr", "0600505", "test@gmail.com", 2);
-        Borrow b = new Borrow(new GregorianCalendar(), expiration, justif, u);
+        Borrow b = new Borrow(new GregorianCalendar(), expiration, justif, u, bc.getId());
         bc.addBorrow(b);
     }
 

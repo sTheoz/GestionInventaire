@@ -3,7 +3,6 @@ package src.View;
 import java.util.Scanner;
 
 import src.Controller.StorageController;
-import src.Model.devices.Device;
 
 public class StorageView {
     
@@ -38,7 +37,7 @@ public class StorageView {
         String location = input_scanner.nextLine();
         System.out.print("Nom du lieu de stockage:");
         String name = input_scanner.nextLine();
-        sc.addStorage(name, location);
+        sc.addStorage(name, location, sc.getId());
     }
 
     public void modifyStorage(Scanner input_scanner){

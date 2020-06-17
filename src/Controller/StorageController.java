@@ -1,13 +1,16 @@
 package src.Controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import src.Model.Storage;
 import java.util.Iterator;
 
-public class StorageController {
+public class StorageController implements Serializable{
     
     private ArrayList<Storage> storages;
     private int id;
+
+    private static final long serialVersionUID = 31L;
 
     private StorageController(){
         this.id = 0;

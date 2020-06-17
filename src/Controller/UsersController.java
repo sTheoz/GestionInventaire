@@ -1,14 +1,17 @@
 package src.Controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import src.Model.User;
 
-public class UsersController {
+public class UsersController implements Serializable{
     
     private ArrayList<User> users;
     private int id;
+
+    private static final long serialVersionUID = 21L;
 
     private UsersController(){
         this.id = 0;
