@@ -142,11 +142,11 @@ public class BorrowView {
                 System.out.println("Les produits disponible :");
                 System.out.println(DevicesController.getInstance(1, 1).toStringAvailableDevices(DevicesController.getInstance(1, 1).getInventory()));
                 Borrow b = bc.getBorrowByID(id);
-                bc.addDevice( b, getDeviceByID(Integer.parseInt(input.nextLine())));
+                bc.addDevice( b, DevicesController.getInstance(1, 1).getDeviceByID(Integer.parseInt(input.nextLine())));
                 break;
             case 3:
                 b = bc.getBorrowByID(id);
-                bc.deleteDevice(b, getDeviceByID(Integer.parseInt(input.nextLine())));
+                bc.deleteDevice(b, DevicesController.getInstance(1, 1).getDeviceByID(Integer.parseInt(input.nextLine())));
                 break;
             case 4:
                 b = bc.getBorrowByID(id);

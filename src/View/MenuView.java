@@ -3,7 +3,6 @@ package src.View;
 import java.io.File;
 import java.util.Scanner;
 
-import src.Controller.DevicesController;
 import src.Controller.StorageController;
 import src.Model.devices.Device;
 
