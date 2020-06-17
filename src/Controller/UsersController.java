@@ -1,6 +1,8 @@
 package src.Controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+
 import src.Model.User;
 
 public class UsersController {
@@ -25,8 +27,10 @@ public class UsersController {
         return INSTANCE;
     }
 
-    public void addUser(String firstName, String name, String addr, String phoneNumber, String mail){
-        users.add(new User(firstName, name, addr, phoneNumber, mail, getId()));
+    public User addUser(String firstName, String name, String addr, String phoneNumber, String mail){
+        User u = new User(firstName, name, addr, phoneNumber, mail, getId());
+        users.add(u);
+        return u;
     }
 
     public void removeUser(User p){
@@ -41,5 +45,17 @@ public class UsersController {
 
     public ArrayList<User> getUsers(){
         return users;
+    }
+
+    public User getUserByID(int id){
+        User u;
+        Iterator<User> iter = users.iterator();
+        while(iter.hasNext()){
+            u = iter.next();
+            if(u.getID() == id){
+                return u;
+            }
+        }
+        return null;
     }
 }

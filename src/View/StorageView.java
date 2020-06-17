@@ -8,36 +8,27 @@ public class StorageView {
     private StorageController dc;
 
     public StorageView(){
-        this.dc = StorageController.getInstance(0, 0);
+        this.dc = StorageController.getInstance();
     }
 
     public StorageView(int id, int nbElem){
-        this.dc = StorageController.getInstance(id, nbElem);
+        this.dc = StorageController.getInstance();
     }
 
     public void printAllStorage(){
         System.out.println("All Storage :");
-        System.out.println(dc.toStringStorage(dc.getInventory()));
+        System.out.println(dc.toStringStorages(dc.getStorages()));
     }
 
-    public void printStorageByType(Device.Type t){
-        System.out.println("All " + t + " :");
-        System.out.println(dc.toStringStorageByType(dc.getInventory(), t));
+    public void printStorageByName(String name){
+        System.out.println("All " + name + " :");
+        System.out.println(dc.toStringStoragesByName(dc.getStorages(), name));
     }
 
-    public void printAllAvailableStorage(){
-        System.out.println("All available Storage :");
-        System.out.println(dc.toStringAvailableStorage(dc.getInventory()));
-    }
-
-    public void printAllNotAvailableStorage(){
-        System.out.println("All unavailable Storage :");
-        System.out.println(dc.toStringNotAvailableStorage(dc.getInventory()));
-    }
-
-    public void printStorageLocation(){
+    public void printStorageByLocation(String location){
         System.out.println("All storages :");
-        System.out.println(dc.toStringLocation(dc.getInventory()));
+        System.out.println(dc.toStringStoragesByLocation(dc.getStorages(), location));
     }
+    
 	
 }

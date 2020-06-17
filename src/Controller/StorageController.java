@@ -2,6 +2,7 @@ package src.Controller;
 
 import java.util.ArrayList;
 import src.Model.Storage;
+import java.util.Iterator;
 
 public class StorageController {
     
@@ -15,7 +16,7 @@ public class StorageController {
 
     /** Instance unique non préinitialisée */
     private static StorageController INSTANCE = null;
-     
+    
     /** Point d'accès pour l'instance unique du Stock */
     public static StorageController getInstance()
     {           
@@ -25,8 +26,9 @@ public class StorageController {
         return INSTANCE;
     }
 
-    public void addStorage(String name, String location){
+    public int addStorage(String name, String location){
         storages.add(new Storage(name, location));
+        return 1;
     }
 
     public void removeStorage(Storage s){
@@ -41,5 +43,36 @@ public class StorageController {
 
     public ArrayList<Storage> getStorages(){
         return storages;
+    }
+
+    public String toStringStorages(ArrayList<Storage> list){
+        String str = "";
+        Iterator<Storage> iter = list.iterator();
+        while(iter.hasNext()){
+            str += iter.next().toString()+"\n";
+        }
+        return str;
+    }
+
+    public String toStringStoragesByName(ArrayList<Storage> list, String name){
+        String str = "";
+        Iterator<Storage> iter = list.iterator();
+        Storage d;
+        while(iter.hasNext()){
+            d = iter.next();
+            if(d.getName() == name) str += d.toString()+"\n";
+        }
+        return str;
+    }
+
+    public String toStringStoragesByLocation(ArrayList<Storage> list, String location){
+        String str = "";
+        Iterator<Storage> iter = list.iterator();
+        Storage d;
+        while(iter.hasNext()){
+            d = iter.next();
+            if(d.getLocation() == location) str += d.toString()+"\n";
+        }
+        return str;
     }
 }

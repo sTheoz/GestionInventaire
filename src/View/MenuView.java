@@ -2,6 +2,9 @@ package src.View;
 
 import java.util.Scanner;
 
+import src.Controller.StorageController;
+import src.Controller.UsersController;
+import src.Model.User;
 import src.Model.devices.Device;
 
 public class MenuView {
@@ -60,17 +63,13 @@ public class MenuView {
                 do{
                     System.out.println("Rentrez la justification souhaitée : ");
                     this.term_result = ((this.input_scanner).nextLine());
-                    //Pas d'inquiétude, le scanner est clos en fin de programme
-                    break;
-                }while(borrowView.printBorrowsByJustification(this.term_result) == 0)
+                }while(borrowView.printBorrowsByJustification(this.term_result) == 0);
                 break;
             case "2.3" :
                 int user_id;
                 do{
                     System.out.println("Rentrez l'id de l'utilisateur souhaité : ");
                     user_id = ((this.input_scanner).nextInt());
-                    //Pas d'inquiétude, le scanner est clos en fin de programme
-                    break;
                 }while(borrowView.printBorrowsByUser(user_id) == 0);
                 break;
             case "2.4" :
@@ -86,10 +85,28 @@ public class MenuView {
                 System.out.println(action);
                 break;
             case "4.3" :
+                UsersController uc = UsersController.getInstance();
+                this.term_result = input_scanner.nextLine();
+                User u1 = uc.getUserByID(Integer.parseInt(this.term_result));
+                if(u1 == null){
+                    String firstname = input_scanner.nextLine();
+                    String name = input_scanner.nextLine();
+                    String addr  = input_scanner.nextLine();
+                    String phone = input_scanner.nextLine();
+                    String mail = input_scanner.nextLine();
+                    u1 = uc.addUser(firstname, name, addr, phone, mail);
+                }
                 borrowView.addBorrow();
                 break;
             case "4.4" :
-                System.out.println(action);
+                String name, location;
+                StorageController storage = StorageController.getInstance();
+                do{
+                    System.out.println("Rentrez le nom du stockage souhaité : ");
+                    name = ((this.input_scanner).nextLine());
+                    System.out.println("Rentrez le nom de la localisation : ");
+                    location = ((this.input_scanner).nextLine());
+                }while(storage.addStorage(name, location) == 0);
                 break;
             case "5" :
                 (this.input_scanner).close();
