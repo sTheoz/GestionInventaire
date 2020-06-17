@@ -42,7 +42,7 @@ public class BorrowsController implements Serializable{
         return str;
     }
 
-    public String toStringBorrowsByJusitification(ArrayList<Borrow> borrows, String j){
+    public String toStringBorrowsByJustification(ArrayList<Borrow> borrows, String j){
         String str = "";
         Iterator<Borrow> iter = borrows.iterator();
         Borrow b;

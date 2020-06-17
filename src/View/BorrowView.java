@@ -36,7 +36,7 @@ public class BorrowView {
     }
     
     public int printBorrowsByJustification(String j){
-        String str = this.bc.toStringBorrowsByJusitification(this.bc.getBorrows(), j);
+        String str = this.bc.toStringBorrowsByJustification(this.bc.getBorrows(), j);
         System.out.println(str);
         if(str == "")return 0;
         return 1;

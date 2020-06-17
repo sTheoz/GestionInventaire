@@ -57,7 +57,7 @@ public class Borrow implements Serializable{
         this.dateEndBorrow = end;
     }
 
-    public void setJusitification(String justif){
+    public void setJustification(String justif){
         this.justification = justif;
     }
 
