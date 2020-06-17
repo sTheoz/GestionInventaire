@@ -26,8 +26,19 @@ public class StorageController {
         return INSTANCE;
     }
 
-    public int addStorage(String name, String location){
-        storages.add(new Storage(name, location));
+    public Storage getStorageByID(int id){
+        Iterator<Storage> iter = (this.storages).iterator();
+        Storage d;
+        while(iter.hasNext()){
+            d = iter.next();
+            if(d.getID() == id)
+                return d;
+        }
+        return new Storage("", "", -1);
+    }
+
+    public int addStorage(String name, String location, int id){
+        storages.add(new Storage(name, location, id));
         return 1;
     }
 
