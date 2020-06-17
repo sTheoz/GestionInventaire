@@ -26,16 +26,22 @@ public class BorrowView {
         System.out.println(this.bc.toStringBorrows(this.bc.getBorrows()));
     }
 
-    public void printBorrowsByUser(int  id){
-        System.out.println(this.bc.toStringBorrowsByUser(this.bc.getBorrows(), id));
+    public int printBorrowsByUser(int  id){
+        String str = this.bc.toStringBorrowsByUser(this.bc.getBorrows(), id);
+        System.out.println(str);
+        if(str == "")return 0;
+        return 1;
     }
 
     public void printBorrowsInLate(){
         System.out.println(this.bc.toStringBorrowsInLate(this.bc.getBorrows()));
     }
     
-    public void printBorrowsByJusitification(String j){
-        System.out.println(this.bc.toStringBorrowsByJusitification(this.bc.getBorrows(), j));
+    public int printBorrowsByJustification(String j){
+        String str = this.bc.toStringBorrowsByJusitification(this.bc.getBorrows(), j);
+        System.out.println(str);
+        if(str == "")return 0;
+        return 1;
     }
 
     public void serialise(){
@@ -63,6 +69,12 @@ public class BorrowView {
     public void addBorrow(){
         User u = new User("Jean", "Paul", "addr", "0600505", "test@gmail.com", 2);
         Borrow b = new Borrow(new Date(), new Date(), "Test", u);
+        bc.addBorrow(b);
+    }
+
+    public void addBorrow(Date expiration, String justif, User u){
+        //User u = new User("Jean", "Paul", "addr", "0600505", "test@gmail.com", 2);
+        Borrow b = new Borrow(new Date(), expiration, justif, u);
         bc.addBorrow(b);
     }
 }

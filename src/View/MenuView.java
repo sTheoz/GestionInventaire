@@ -2,6 +2,8 @@ package src.View;
 
 import java.util.Scanner;
 
+import src.Controller.UsersController;
+import src.Model.User;
 import src.Model.devices.Device;
 
 public class MenuView {
@@ -58,7 +60,7 @@ public class MenuView {
                 borrowView.printAllBorrows();
                 break;
             case "2.2" :
-                borrowView.printBorrowsByJusitification("Justification à passer");
+                borrowView.printBorrowsByJustification("Justification à passer");
                 break;
             case "2.3" :
                 borrowView.printBorrowsByUser(102);
@@ -76,6 +78,17 @@ public class MenuView {
                 System.out.println(action);
                 break;
             case "4.3" :
+                UsersController uc = UsersController.getInstance();
+                this.term_result = input_scanner.nextLine();
+                User u1 = uc.getUserByID(Integer.parseInt(this.term_result));
+                if(u1 == null){
+                    String firstname = input_scanner.nextLine();
+                    String name = input_scanner.nextLine();
+                    String addr  = input_scanner.nextLine();
+                    String phone = input_scanner.nextLine();
+                    String mail = input_scanner.nextLine();
+                    u1 = uc.addUser(firstname, name, addr, phone, mail);
+                }
                 borrowView.addBorrow();
                 break;
             case "4.4" :
