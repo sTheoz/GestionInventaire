@@ -78,7 +78,7 @@ public class MenuView {
                 storageView.printAllStorage();
                 break;
             case "4.1" :
-                deviceView.printDevicesByType( getTypeInput() );
+                deviceView.addDevice( getTypeInput(), this.input_scanner );
                 break;
             case "4.2" :
                 System.out.println("[0] Ajouter un lieu de stockage");
@@ -111,7 +111,7 @@ public class MenuView {
                     name = ((this.input_scanner).nextLine());
                     System.out.println("Rentrez le nom de la localisation : ");
                     location = ((this.input_scanner).nextLine());
-                }while(storage.addStorage(name, location) == 0);
+                }while(storage.addStorage(name, location, StorageController.getInstance().getId()) == 0);
                 break;
             case "5" :
                 (this.input_scanner).close();
