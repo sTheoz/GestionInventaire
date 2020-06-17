@@ -1,11 +1,8 @@
 package src.View;
 
-import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 import src.Controller.StorageController;
-import src.Controller.UsersController;
-import src.Model.User;
 import src.Model.devices.Device;
 
 public class MenuView {
@@ -84,46 +81,30 @@ public class MenuView {
                 deviceView.printDevicesByType( getTypeInput() );
                 break;
             case "4.2" :
-                System.out.println("=== Ajout d'un lieu de stockage ===");
-                System.out.print("Localisation :");
-                String location = input_scanner.nextLine();
-                System.out.print("Nom du lieu de stockage:");
-                String name = input_scanner.nextLine();
-                StorageController sc = StorageController.getInstance();
-                sc.addStorage(name, location);
+                System.out.println("[0] Ajouter un lieu de stockage");
+                System.out.println("[1] Modifier un lieu de stockage");
+                System.out.println("[x] Revenir au menu");
+                term_result = input_scanner.nextLine();
+                if(term_result.compareTo("0") == 0){
+                    storageView.addStorage(input_scanner);
+                }else if(term_result.compareTo("1") == 0){
+                    storageView.modifyStorage(input_scanner);
+                }
                 break;
             case "4.3" :
-                System.out.println("=== Ajout d'un emprunt ===");
-                UsersController uc = UsersController.getInstance();
-                System.out.print("Id de l'Utilisateur (-1 pour créer un nouvel utilisateur) :");
-                this.term_result = input_scanner.nextLine();
-                User u1 = uc.getUserByID(Integer.parseInt(this.term_result));
-                if(u1 == null){
-                    System.out.println("=== Ajout d'un utilisateur ===");
-                    System.out.print("Prénom :");
-                    String firstname = input_scanner.nextLine();
-                    System.out.print("Nom :");
-                    name = input_scanner.nextLine();
-                    System.out.print("Adresse :");
-                    String addr  = input_scanner.nextLine();
-                    System.out.print("Téléphone :");
-                    String phone = input_scanner.nextLine();
-                    System.out.print("Mail :");
-                    String mail = input_scanner.nextLine();
-                    u1 = uc.addUser(firstname, name, addr, phone, mail);
+                System.out.println("[0] Créer un emprunt");
+                System.out.println("[1] Modifier un emprunt");
+                System.out.println("[x] Revenir au menu");
+                term_result = input_scanner.nextLine();
+                if(term_result.compareTo("0") == 0){
+                    borrowView.askCreateBorrow(input_scanner);
+                }else if(term_result.compareTo("1") == 0){
+                    System.out.println(" Modifier emprunt TODO");
+                    //storageView.modifyStorage(input_scanner);
                 }
-                System.out.print("Année d'expiration :");
-                String year = input_scanner.nextLine();
-                System.out.print("Jour d'expiration :");
-                String day = input_scanner.nextLine();
-                System.out.print("Mois d'expiration :");
-                String month = input_scanner.nextLine();
-                GregorianCalendar c = new GregorianCalendar(Integer.parseInt(year), Integer.parseInt(month)-1, Integer.parseInt(day));
-                System.out.print("Raison de l'emprunt :");
-                String justif = input_scanner.nextLine();
-                borrowView.addBorrow(c, justif ,u1);
                 break;
             case "4.4" :
+            String name,location;
                 StorageController storage = StorageController.getInstance();
                 do{
                     System.out.println("Rentrez le nom du stockage souhaité : ");
