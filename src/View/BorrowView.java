@@ -5,12 +5,10 @@ import src.Model.User;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.GregorianCalendar;
 
 import src.Controller.BorrowsController;
 
@@ -68,13 +66,13 @@ public class BorrowView {
 
     public void addBorrow(){
         User u = new User("Jean", "Paul", "addr", "0600505", "test@gmail.com", 2);
-        Borrow b = new Borrow(new Date(), new Date(), "Test", u);
+        Borrow b = new Borrow(new GregorianCalendar(), new GregorianCalendar(), "Test", u);
         bc.addBorrow(b);
     }
 
-    public void addBorrow(Date expiration, String justif, User u){
+    public void addBorrow(GregorianCalendar expiration, String justif, User u){
         //User u = new User("Jean", "Paul", "addr", "0600505", "test@gmail.com", 2);
-        Borrow b = new Borrow(new Date(), expiration, justif, u);
+        Borrow b = new Borrow(new GregorianCalendar(), expiration, justif, u);
         bc.addBorrow(b);
     }
 }

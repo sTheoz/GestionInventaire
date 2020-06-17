@@ -62,9 +62,9 @@ public class BorrowsController implements Serializable{
         Date d = new Date(System.currentTimeMillis());
         while(iter.hasNext()){
             b = iter.next();
-            if(b.getEndBorrow().before(d)){
+            /*if(b.getEndBorrow() ){
                 str += b.toString()+"\n";
-            }
+            }*/
         }
         return str;
     }

@@ -1,5 +1,6 @@
 package src.View;
 
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 import src.Controller.StorageController;
@@ -10,6 +11,7 @@ import src.Model.devices.Device;
 public class MenuView {
     private BorrowView borrowView = new BorrowView();
     private DevicesView deviceView = new DevicesView();
+    private StorageView  storageView = new StorageView();
     private String term_result;
     private Scanner input_scanner = new Scanner(System.in);
     
@@ -68,38 +70,60 @@ public class MenuView {
             case "2.3" :
                 int user_id;
                 do{
-                    System.out.println("Rentrez l'id de l'utilisateur souhaité : ");
-                    user_id = ((this.input_scanner).nextInt());
-                }while(borrowView.printBorrowsByUser(user_id) == 0);
+                    System.out.println("Rentrez l'id de l'utilisateur souhaité (-1 for exit): ");
+                    user_id = Integer.parseInt(((this.input_scanner).nextLine()));
+                }while(borrowView.printBorrowsByUser(user_id) == 0 || user_id == -1);
                 break;
             case "2.4" :
                 borrowView.printBorrowsInLate();
                 break;
             case "3.1" :
-                deviceView.printStorageLocation();
+                storageView.printAllStorage();
                 break;
             case "4.1" :
                 deviceView.addDevice( getTypeInput(), this.input_scanner );
                 break;
             case "4.2" :
-                System.out.println(action);
+                System.out.println("=== Ajout d'un lieu de stockage ===");
+                System.out.print("Localisation :");
+                String location = input_scanner.nextLine();
+                System.out.print("Nom du lieu de stockage:");
+                String name = input_scanner.nextLine();
+                StorageController sc = StorageController.getInstance();
+                sc.addStorage(name, location, sc.getId());
                 break;
             case "4.3" :
+                System.out.println("=== Ajout d'un emprunt ===");
                 UsersController uc = UsersController.getInstance();
+                System.out.print("Id de l'Utilisateur (-1 pour créer un nouvel utilisateur) :");
                 this.term_result = input_scanner.nextLine();
                 User u1 = uc.getUserByID(Integer.parseInt(this.term_result));
                 if(u1 == null){
+                    System.out.println("=== Ajout d'un utilisateur ===");
+                    System.out.print("Prénom :");
                     String firstname = input_scanner.nextLine();
-                    String name = input_scanner.nextLine();
+                    System.out.print("Nom :");
+                    name = input_scanner.nextLine();
+                    System.out.print("Adresse :");
                     String addr  = input_scanner.nextLine();
+                    System.out.print("Téléphone :");
                     String phone = input_scanner.nextLine();
+                    System.out.print("Mail :");
                     String mail = input_scanner.nextLine();
                     u1 = uc.addUser(firstname, name, addr, phone, mail);
                 }
-                borrowView.addBorrow();
+                System.out.print("Année d'expiration :");
+                String year = input_scanner.nextLine();
+                System.out.print("Jour d'expiration :");
+                String day = input_scanner.nextLine();
+                System.out.print("Mois d'expiration :");
+                String month = input_scanner.nextLine();
+                GregorianCalendar c = new GregorianCalendar(Integer.parseInt(year), Integer.parseInt(month)-1, Integer.parseInt(day));
+                System.out.print("Raison de l'emprunt :");
+                String justif = input_scanner.nextLine();
+                borrowView.addBorrow(c, justif ,u1);
                 break;
             case "4.4" :
-                String name, location;
                 StorageController storage = StorageController.getInstance();
                 do{
                     System.out.println("Rentrez le nom du stockage souhaité : ");

@@ -1,27 +1,27 @@
 package src.Model;
 
-import java.util.Date;
+import java.util.GregorianCalendar;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
+
 import src.Model.devices.Device;
 
 public class Borrow implements Serializable{
 
-    private Date dateBorrow;
-    private Date dateEndBorrow;
+    private GregorianCalendar dateBorrow;
+    private GregorianCalendar dateEndBorrow;
     private String justification;
     private ArrayList<Device> devices;
     private User borrower;
 
     private static final long serialVersionUID = 1L;
 
-    public Borrow(Date date, Date endBorrow, String justif, User borrower){
+    public Borrow(GregorianCalendar date, GregorianCalendar endBorrow, String justif, User borrower){
         super();
         this.dateBorrow = date;
         this.justification = justif;
@@ -32,15 +32,19 @@ public class Borrow implements Serializable{
 
     @Override
     public String toString(){
-        return borrower + " borrow " + devices.toString() + " for " + justification + " since " + dateBorrow + " to " + dateEndBorrow;
+        return borrower + " borrow " + devices.toString() + " for " + justification + " since " + getDate() + " to " + getEndBorrow();
     }
 
-    public Date getDate(){
-        return dateBorrow;
+    public String getDate(){
+        String str = "";
+        str =  dateBorrow.get(Calendar.DATE) + "/" + dateBorrow.get(Calendar.MONTH)+1 + "/" + dateBorrow.get(Calendar.YEAR); 
+        return str;
     }
     
-    public Date getEndBorrow(){
-        return dateEndBorrow;
+    public String getEndBorrow(){
+        String str = "";
+        str =  dateEndBorrow.get(Calendar.DATE) + "/" + dateEndBorrow.get(Calendar.MONTH)+1 + "/" + dateEndBorrow.get(Calendar.YEAR); 
+        return str;
     }
 
     public String getJustification(){
@@ -55,7 +59,7 @@ public class Borrow implements Serializable{
         return borrower.getID();
     }
 
-    public void setEndBorrow(Date end){
+    public void setEndBorrow(GregorianCalendar end){
         this.dateEndBorrow = end;
     }
 

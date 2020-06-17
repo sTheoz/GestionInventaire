@@ -34,4 +34,9 @@ public class Storage {
     public void setID(int id){
         this.id = id;
     }
+
+    @Override
+    public String toString(){
+        return this.name + " : " + this.location; 
+    }
 }
