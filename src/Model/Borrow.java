@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
+
 import src.Model.devices.Device;
 
 public class Borrow implements Serializable{
@@ -30,15 +32,19 @@ public class Borrow implements Serializable{
 
     @Override
     public String toString(){
-        return borrower + " borrow " + devices.toString() + " for " + justification + " since " + dateBorrow + " to " + dateEndBorrow;
+        return borrower + " borrow " + devices.toString() + " for " + justification + " since " + getDate() + " to " + getEndBorrow();
     }
 
-    public GregorianCalendar getDate(){
-        return dateBorrow;
+    public String getDate(){
+        String str = "";
+        str =  dateBorrow.get(Calendar.DATE) + "/" + dateBorrow.get(Calendar.MONTH)+1 + "/" + dateBorrow.get(Calendar.YEAR); 
+        return str;
     }
     
-    public GregorianCalendar getEndBorrow(){
-        return dateEndBorrow;
+    public String getEndBorrow(){
+        String str = "";
+        str =  dateEndBorrow.get(Calendar.DATE) + "/" + dateEndBorrow.get(Calendar.MONTH)+1 + "/" + dateEndBorrow.get(Calendar.YEAR); 
+        return str;
     }
 
     public String getJustification(){
