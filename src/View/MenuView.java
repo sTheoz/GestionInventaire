@@ -1,5 +1,8 @@
 package src.View;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 import src.Controller.UsersController;
@@ -80,16 +83,31 @@ public class MenuView {
             case "4.3" :
                 UsersController uc = UsersController.getInstance();
                 this.term_result = input_scanner.nextLine();
+                System.out.print("Id de l'Utilisateur (-1 pour créer un nouvel utilisateur) :");
                 User u1 = uc.getUserByID(Integer.parseInt(this.term_result));
                 if(u1 == null){
+                    System.out.print("Prénom :");
                     String firstname = input_scanner.nextLine();
+                    System.out.print("Nom :");
                     String name = input_scanner.nextLine();
+                    System.out.print("Adresse :");
                     String addr  = input_scanner.nextLine();
+                    System.out.print("Téléphone :");
                     String phone = input_scanner.nextLine();
+                    System.out.print("Mail :");
                     String mail = input_scanner.nextLine();
                     u1 = uc.addUser(firstname, name, addr, phone, mail);
                 }
-                borrowView.addBorrow();
+                System.out.print("Année d'expiration :");
+                String year = input_scanner.nextLine();
+                System.out.print("Jour d'expiration :");
+                String day = input_scanner.nextLine();
+                System.out.print("Mois d'expiration :");
+                String month = input_scanner.nextLine();
+                GregorianCalendar c = new GregorianCalendar(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
+                System.out.print("Raison de l'emprunt :");
+                String justif = input_scanner.nextLine();
+                borrowView.addBorrow(c, justif ,u1);
                 break;
             case "4.4" :
                 System.out.println(action);

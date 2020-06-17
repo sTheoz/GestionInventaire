@@ -1,11 +1,9 @@
 package src.Model;
 
-import java.util.Date;
+import java.util.GregorianCalendar;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,15 +11,15 @@ import src.Model.devices.Device;
 
 public class Borrow implements Serializable{
 
-    private Date dateBorrow;
-    private Date dateEndBorrow;
+    private GregorianCalendar dateBorrow;
+    private GregorianCalendar dateEndBorrow;
     private String justification;
     private ArrayList<Device> devices;
     private User borrower;
 
     private static final long serialVersionUID = 1L;
 
-    public Borrow(Date date, Date endBorrow, String justif, User borrower){
+    public Borrow(GregorianCalendar date, GregorianCalendar endBorrow, String justif, User borrower){
         super();
         this.dateBorrow = date;
         this.justification = justif;
@@ -35,11 +33,11 @@ public class Borrow implements Serializable{
         return borrower + " borrow " + devices.toString() + " for " + justification + " since " + dateBorrow + " to " + dateEndBorrow;
     }
 
-    public Date getDate(){
+    public GregorianCalendar getDate(){
         return dateBorrow;
     }
     
-    public Date getEndBorrow(){
+    public GregorianCalendar getEndBorrow(){
         return dateEndBorrow;
     }
 
@@ -55,7 +53,7 @@ public class Borrow implements Serializable{
         return borrower.getID();
     }
 
-    public void setEndBorrow(Date end){
+    public void setEndBorrow(GregorianCalendar end){
         this.dateEndBorrow = end;
     }
 
