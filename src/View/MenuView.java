@@ -3,6 +3,7 @@ package src.View;
 import java.io.File;
 import java.util.Scanner;
 
+import src.Controller.DevicesController;
 import src.Controller.StorageController;
 import src.Model.devices.Device;
 
@@ -134,7 +135,7 @@ public class MenuView {
                 storageView.serialise();
                 break;
             case "7" :
-            System.out.println("Deserialise");
+                System.out.println("Deserialise");
                 borrowView.deserialise();
                 storageView.deserialise();
                 break;
@@ -142,6 +143,11 @@ public class MenuView {
                 return 1;
         }
         return 0;
+    }
+
+    public int getIDInput(){
+        System.out.println("Rentrez un ID :");
+        return Integer.parseInt((this.input_scanner).nextLine());
     }
 
     public Device.Type getTypeInput(){

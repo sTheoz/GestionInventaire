@@ -32,7 +32,7 @@ public abstract class Device implements Serializable{
 		this.price = price ;
 		this.state = st;
 		this.location = location;
-		this.available = true;
+		this.available = false;
 		this.type = type;
 		this.id = id;
 	}
@@ -43,6 +43,10 @@ public abstract class Device implements Serializable{
 
 	public Storage getLocation(){
 		return this.location;
+	}
+
+	public int getID(){
+		return this.id;
 	}
 
 	public State getState(){
@@ -75,6 +79,10 @@ public abstract class Device implements Serializable{
 
 	public void setLocation(Storage s){
 		this.location = s;
+	}
+
+	public void setType(Device.Type type){
+		this.type = type;
 	}
 
 	public void setState(State st){
