@@ -13,6 +13,7 @@ import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 import src.Controller.BorrowsController;
+import src.Controller.DevicesController;
 import src.Controller.UsersController;
 
 public class BorrowView {
@@ -76,8 +77,13 @@ public class BorrowView {
     }
 
     public void addBorrow(GregorianCalendar expiration, String justif, User u){
-        //User u = new User("Jean", "Paul", "addr", "0600505", "test@gmail.com", 2);
         Borrow b = new Borrow(new GregorianCalendar(), expiration, justif, u, bc.getId());
+        DevicesController dc = DevicesController.getInstance(1, 1);
+        System.out.println("Les produits disponible :");
+        System.out.println(dc.toStringAvailableDevices(dc.getInventory()));
+        Scanner in = new Scanner(System.in);
+        int deviceId = Integer.parseInt(in.nextLine());
+        b.addDevice(dc.getDeviceByID(deviceId));
         bc.addBorrow(b);
     }
 
@@ -112,5 +118,42 @@ public class BorrowView {
         System.out.print("Raison de l'emprunt :");
         String justif = input.nextLine();
         this.addBorrow(c, justif ,u1);
+    }
+
+    public void askModifyBorrow(Scanner input){
+        System.out.println("=== Modification d'un emprunt ===");
+        System.out.print("ID de l'emprunt :");
+        int id = Integer.parseInt(input.nextLine());
+        System.out.println("[0] Modifier la date d'expiration");
+        System.out.println("[1] Modifier la raison de l'emprunt");
+        System.out.println("[2] Ajouter un appareil");
+        System.out.println("[3] Supprimer un appareil");
+        System.out.println("[4] Rendre l'emprunt");
+        System.out.println("[x] Revenir au menu");
+        int attribute = Integer.parseInt(input.nextLine());
+        switch(attribute){
+            case 0:
+                bc.modifyExpiration(id, input);
+                break;
+            case 1:
+                bc.modifyJustification(id, input);
+                break;
+            case 2:
+                System.out.println("Les produits disponible :");
+                System.out.println(DevicesController.getInstance(1, 1).toStringAvailableDevices(DevicesController.getInstance(1, 1).getInventory()));
+                Borrow b = bc.getBorrowByID(id);
+                bc.addDevice( b, getDeviceByID(Integer.parseInt(input.nextLine())));
+                break;
+            case 3:
+                b = bc.getBorrowByID(id);
+                bc.deleteDevice(b, getDeviceByID(Integer.parseInt(input.nextLine())));
+                break;
+            case 4:
+                b = bc.getBorrowByID(id);
+                bc.removeBorrow(b);
+                break;
+            default:
+                return;
+        }
     }
 }

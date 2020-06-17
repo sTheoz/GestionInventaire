@@ -82,6 +82,10 @@ public class Borrow implements Serializable{
         }
     }
 
+    public void removeDevice(Device d){
+        devices.remove(d);
+    }
+
     public void serialise(){
         try{
             File fichier =  new File("data/borrowController"+ serialVersionUID +".ser") ;

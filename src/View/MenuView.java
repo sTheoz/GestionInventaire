@@ -108,7 +108,7 @@ public class MenuView {
                     borrowView.askCreateBorrow(input_scanner);
                 }else if(term_result.compareTo("1") == 0){
                     System.out.println(" Modifier emprunt TODO");
-                    //storageView.modifyStorage(input_scanner);
+                    borrowView.askModifyBorrow(input_scanner);
                 }
                 break;
             case "4.4" :
