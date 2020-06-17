@@ -46,7 +46,7 @@ public class DevicesView {
         System.out.println("Rentrez l'état (OK, KO, NEW, NA): ");
         temp = (input_scanner.nextLine());
         System.out.println("Rentrez le prix : ");
-        price = (input_scanner.nextInt());
+        price = Integer.parseInt((input_scanner.nextLine()));
         switch(temp){
             case "OK":
                 st = Device.State.OK;
@@ -65,9 +65,9 @@ public class DevicesView {
                 return;
         }
         System.out.println("Rentrez l'endroit de stockage : ");
-        location = this.sc.getStorageByID(input_scanner.nextInt());
+        location = this.sc.getStorageByID(Integer.parseInt(input_scanner.nextLine()));
         System.out.println("Rentrez la quantité : ");
-        nb = (input_scanner.nextInt());
+        nb = Integer.parseInt((input_scanner.nextLine()));
         switch(type){
             case Phone:
                 System.out.println("Rentrez le Système d'exploitation (Android, iOs, Windows, NA) : ");
@@ -90,10 +90,11 @@ public class DevicesView {
                         return;
                 }
                 System.out.println("Rentrez la taille en pouce sans le \" : ");
-                sz = (input_scanner.nextDouble());
+                sz = Double.parseDouble(input_scanner.nextLine());
                 this.dc.addPhone(ref, name, brand, price, se, sz, st, location, nb);
                 break;
             case Webcam:
+                System.out.println("Rentrez la résolution (LOW, MEDIUM, HIGH, NA)");
                 temp = input_scanner.nextLine();
                 switch(temp){
                     case "LOW":
@@ -116,7 +117,7 @@ public class DevicesView {
                 break;
             case Headset:
                 System.out.println("Rentrez si le casque fait de la VR (0/1) : ");
-                vr = (input_scanner.nextInt());
+                vr = Integer.parseInt((input_scanner.nextLine()));
                 this.dc.addHeadset(ref, name, brand, price, st, location, vr, nb);
                 break;
             case Sensor:
@@ -146,7 +147,7 @@ public class DevicesView {
                         return;
                 }
                 System.out.println("Rentrez la taille en pouce sans le \" : ");
-                sz = (input_scanner.nextDouble());
+                sz = Double.parseDouble(input_scanner.nextLine());
                 this.dc.addTablet(ref, name, brand, price, se, sz, st, location, nb);
                 break;
             case NA:
@@ -157,6 +158,36 @@ public class DevicesView {
                 return;
         }
     }
+
+    /*
+    public void updateDevice(Device.Type inputType, int device_id){
+        DevicesController.getInstance(0, 0).getDevices();
+        String champ = input_scanner.nextLine();
+        switch(champ){
+            case "Type" :
+                String type = input_scanner.nextLine();
+                device.setType();
+                break;
+            case "Reference" :
+                break;
+            case "Nom" :
+                break;
+            case "Marque" :
+                break;
+            case "Prix" :
+                break;
+            case "Etat" :
+                break;
+            case "Local de stockage" :
+                break;
+            case "Responsable" :
+                break;
+            case "Disponible" :
+                break;
+            case "State" :
+                break;
+        }
+    }*/
 
     public void printAllDevices(){
         System.out.println("All devices :");

@@ -21,7 +21,7 @@ public class DevicesController implements Serializable{
 
     /** Instance unique non préinitialisée */
     private static DevicesController INSTANCE = null;
-     
+    
     /** Point d'accès pour l'instance unique du Stock */
     public static DevicesController getInstance(int id, int nbEle)
     {           
@@ -34,6 +34,17 @@ public class DevicesController implements Serializable{
     
     public ArrayList<Device> getDevices(){
         return this.inventory;
+    }
+
+    public Device getDeviceByID(int id){
+        Device d = this.inventory.get(0);
+        Iterator<Device> iter = this.inventory.iterator();
+        while(iter.hasNext()){
+            d = iter.next();
+            if(d.getID() == id)
+                return d;
+        }
+        return d;
     }
 
     private DevicesController(int id, int nbEle){

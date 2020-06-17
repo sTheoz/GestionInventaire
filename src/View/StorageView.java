@@ -75,7 +75,7 @@ public class StorageView {
             sc = ((StorageController) ois.readObject());
             ois.close();
         }catch(IOException|ClassNotFoundException e){
-            System.err.println("Errorrrr");
+            System.err.println("Error");
         } 
     }
 }
