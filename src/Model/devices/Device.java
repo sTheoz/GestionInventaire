@@ -32,7 +32,7 @@ public abstract class Device implements Serializable{
 		this.price = price ;
 		this.state = st;
 		this.location = location;
-		this.available = false;
+		this.available = true;
 		this.type = type;
 		this.id = id;
 	}

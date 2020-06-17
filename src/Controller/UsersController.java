@@ -61,4 +61,9 @@ public class UsersController implements Serializable{
         }
         return null;
     }
+
+    public void deserialise(ArrayList<User> users, int id){
+        this.users = users;
+        this.id = id;
+    }
 }

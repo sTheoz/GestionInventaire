@@ -163,5 +163,8 @@ public class BorrowsController implements Serializable{
         return null;
     }
 
-
+    public void deserialise(ArrayList<Borrow> borrows, int id){
+        this.borrows = borrows;
+        this.id = id;
+    }
 }

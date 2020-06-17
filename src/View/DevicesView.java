@@ -20,12 +20,7 @@ public class DevicesView {
     private StorageController sc;
 
     public DevicesView(){
-        this.dc = DevicesController.getInstance(0, 0);
-        this.sc = StorageController.getInstance();
-    }
-
-    public DevicesView(int id, int nbElem){
-        this.dc = DevicesController.getInstance(id, nbElem);
+        this.dc = DevicesController.getInstance();
         this.sc = StorageController.getInstance();
     }
 
@@ -236,8 +231,19 @@ public class DevicesView {
             ObjectInputStream ois =  new ObjectInputStream(new FileInputStream(fichier)) ;
                     
             // désérialization de l'objet
-            dc = ((DevicesController) ois.readObject());
+            DevicesController dcTmp = ((DevicesController) ois.readObject());
             ois.close();
+            dc = DevicesController.getInstance();
+            dc.deserialise(dcTmp.getInventory(), dcTmp.getId(), dcTmp.getNbElement()-1);
+
+            sc = StorageController.getInstance();
+            fichier = new  File("data/storageController.ser") ;
+            ois =  new ObjectInputStream(new FileInputStream(fichier)) ;
+                    
+            // désérialization de l'objet
+            StorageController scTmp = ((StorageController) ois.readObject());
+            ois.close();
+            sc.deserialise(scTmp.getStorages(), scTmp.getId());
         }catch(IOException|ClassNotFoundException e){
             System.err.println("Errorrrr");
         } 

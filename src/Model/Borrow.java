@@ -34,7 +34,7 @@ public class Borrow implements Serializable{
 
     @Override
     public String toString(){
-        return borrower + " borrow " + devices.toString() + " for " + justification + " since " + getDate() + " to " + getEndBorrow();
+        return borrower.getFirstName() + " " + borrower.getName() + " borrow " + devices.toString() + " pour la raison: " + justification + "\ndepuis le " + getDate() + " jusqu'au " + getEndBorrow();
     }
 
     public int getID(){
@@ -43,13 +43,13 @@ public class Borrow implements Serializable{
 
     public String getDate(){
         String str = "";
-        str =  dateBorrow.get(Calendar.DATE) + "/" + dateBorrow.get(Calendar.MONTH)+1 + "/" + dateBorrow.get(Calendar.YEAR); 
+        str =  dateBorrow.get(Calendar.DATE) + "/" + (dateBorrow.get(Calendar.MONTH)+1) + "/" + dateBorrow.get(Calendar.YEAR); 
         return str;
     }
     
     public String getEndBorrow(){
         String str = "";
-        str =  dateEndBorrow.get(Calendar.DATE) + "/" + dateEndBorrow.get(Calendar.MONTH)+1 + "/" + dateEndBorrow.get(Calendar.YEAR); 
+        str =  dateEndBorrow.get(Calendar.DATE) + "/" + (dateEndBorrow.get(Calendar.MONTH)+1) + "/" + dateEndBorrow.get(Calendar.YEAR); 
         return str;
     }
 

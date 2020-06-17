@@ -14,7 +14,7 @@ public class User implements Serializable{
     private static final long serialVersionUID = 2L;
 
     public User(String firstName, String name, String addr, String phoneNumber, String mail, int id){
-        this.firstName = name;
+        this.firstName = firstName;
         this.name = name;
         this.address = addr;
         this.phoneNumber = phoneNumber;
@@ -60,5 +60,10 @@ public class User implements Serializable{
 
     public void setMail(String m){
         this.mail = m;
+    }
+
+    @Override
+    public String toString(){
+        return firstName + " " + name;
     }
 }

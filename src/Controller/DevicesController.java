@@ -23,10 +23,10 @@ public class DevicesController implements Serializable{
     private static DevicesController INSTANCE = null;
     
     /** Point d'accès pour l'instance unique du Stock */
-    public static DevicesController getInstance(int id, int nbEle)
+    public static DevicesController getInstance()
     {           
         if (INSTANCE == null)
-        {   INSTANCE = new DevicesController(id, nbEle); 
+        {   INSTANCE = new DevicesController(); 
         }
         return INSTANCE;
     }
@@ -47,9 +47,9 @@ public class DevicesController implements Serializable{
         return d;
     }
 
-    private DevicesController(int id, int nbEle){
-        this.id = id;
-        this.numberElement = nbEle;
+    private DevicesController(){
+        this.id = 0;
+        this.numberElement = 0;
         this.inventory = new ArrayList<Device>();
     }
 
@@ -180,5 +180,11 @@ public class DevicesController implements Serializable{
             inventory.add(new Tablet(ref, nom, marque, prix, se, sz, st, location, Device.Type.Tablet, getId()));
             incrementStock();
         }
+    }
+
+    public void deserialise(ArrayList<Device> inventory, int id, int nbElem){
+        this.inventory = inventory;
+        this.id = id;
+        this.numberElement = nbElem;
     }
 }

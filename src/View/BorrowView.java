@@ -2,6 +2,7 @@ package src.View;
 
 import src.Model.Borrow;
 import src.Model.User;
+import src.Model.devices.Device;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,9 +20,11 @@ import src.Controller.UsersController;
 public class BorrowView {
 
     private BorrowsController bc;
+    private DevicesController dc;
 	
     public BorrowView(){
         this.bc = BorrowsController.getInstance();
+        this.dc = DevicesController.getInstance();
     }
 	
     public void printAllBorrows(){
@@ -56,6 +59,15 @@ public class BorrowView {
             // sérialization de l'objet
             oos.writeObject(bc);
             oos.close();
+
+            fichier =  new File("data/usersController.ser") ;
+            // ouverture d'un flux sur un fichier
+            oos =  new ObjectOutputStream(new FileOutputStream(fichier)) ;
+    
+            // sérialization de l'objet
+            oos.writeObject(UsersController.getInstance());
+            oos.close();
+            
         }catch(IOException e){
             System.err.println("Errorrrr 1");
         }
@@ -69,8 +81,31 @@ public class BorrowView {
             ObjectInputStream ois =  new ObjectInputStream(new FileInputStream(fichier)) ;
                     
             // désérialization de l'objet
-            bc = (BorrowsController) ois.readObject();
+            BorrowsController bcTmp = (BorrowsController) ois.readObject();
             ois.close();
+
+            bc = BorrowsController.getInstance();
+            bc.deserialise(bcTmp.getBorrows(), bcTmp.getId());
+
+            fichier = new  File("data/devicesController.ser") ;
+            ois =  new ObjectInputStream(new FileInputStream(fichier)) ;
+                    
+            // désérialization de l'objet
+            DevicesController dcTmp = ((DevicesController) ois.readObject());
+            ois.close();
+            dc = DevicesController.getInstance();
+            dc.deserialise(dcTmp.getInventory(), dcTmp.getId(), dcTmp.getNbElement()-1);
+
+
+            fichier = new  File("data/usersController.ser") ;
+            ois =  new ObjectInputStream(new FileInputStream(fichier)) ;
+                    
+            // désérialization de l'objet
+            UsersController ucTmp = ((UsersController) ois.readObject());
+            ois.close();
+            UsersController uc = UsersController.getInstance();
+            uc.deserialise(ucTmp.getUsers(), ucTmp.getId());
+
         }catch(IOException|ClassNotFoundException e){
             System.err.println("Errorrrr");
         }  
@@ -78,12 +113,13 @@ public class BorrowView {
 
     public void addBorrow(GregorianCalendar expiration, String justif, User u){
         Borrow b = new Borrow(new GregorianCalendar(), expiration, justif, u, bc.getId());
-        DevicesController dc = DevicesController.getInstance(1, 1);
         System.out.println("Les produits disponible :");
-        System.out.println(dc.toStringAvailableDevices(dc.getInventory()));
+        System.out.println(this.dc.toStringAvailableDevices(dc.getInventory()));
         Scanner in = new Scanner(System.in);
         int deviceId = Integer.parseInt(in.nextLine());
-        b.addDevice(dc.getDeviceByID(deviceId));
+        Device d = this.dc.getDeviceByID(deviceId);
+        b.addDevice(d);
+        d.setUnavailable();
         bc.addBorrow(b);
     }
 
@@ -140,13 +176,13 @@ public class BorrowView {
                 break;
             case 2:
                 System.out.println("Les produits disponible :");
-                System.out.println(DevicesController.getInstance(1, 1).toStringAvailableDevices(DevicesController.getInstance(1, 1).getInventory()));
+                System.out.println(DevicesController.getInstance().toStringAvailableDevices(DevicesController.getInstance().getInventory()));
                 Borrow b = bc.getBorrowByID(id);
-                bc.addDevice( b, DevicesController.getInstance(1, 1).getDeviceByID(Integer.parseInt(input.nextLine())));
+                bc.addDevice( b, DevicesController.getInstance().getDeviceByID(Integer.parseInt(input.nextLine())));
                 break;
             case 3:
                 b = bc.getBorrowByID(id);
-                bc.deleteDevice(b, DevicesController.getInstance(1, 1).getDeviceByID(Integer.parseInt(input.nextLine())));
+                bc.deleteDevice(b, DevicesController.getInstance().getDeviceByID(Integer.parseInt(input.nextLine())));
                 break;
             case 4:
                 b = bc.getBorrowByID(id);

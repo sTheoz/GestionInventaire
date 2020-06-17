@@ -7,9 +7,9 @@ import src.Controller.StorageController;
 import src.Model.devices.Device;
 
 public class MenuView {
+    private StorageView  storageView = new StorageView();
     private BorrowView borrowView = new BorrowView();
     private DevicesView deviceView = new DevicesView();
-    private StorageView  storageView = new StorageView();
     private String term_result;
     private Scanner input_scanner = new Scanner(System.in);
     
@@ -17,12 +17,18 @@ public class MenuView {
         File bcf = new File("data/borrowsController.ser");
         File dcf = new File("data/devicesController.ser");
         File scf = new File("data/storageController.ser");
-        if(bcf.exists())borrowView.deserialise();
-        if(dcf.exists())deviceView.deserialise();
         if(scf.exists())storageView.deserialise();
+        if(dcf.exists())deviceView.deserialise();
+        if(bcf.exists())borrowView.deserialise();
     }
 
+    public void clearScreen() {  
+        System.out.print("\033[H\033[2J");  
+        System.out.flush();  
+    }  
+
     public String printMenu(){
+        this.clearScreen();
         System.out.println("=== MENU ===");
         System.out.println("Afficher le matériel");
         System.out.println("\t1.1 : Total");

@@ -89,4 +89,9 @@ public class StorageController implements Serializable{
         }
         return str;
     }
+
+    public void deserialise(ArrayList<Storage> storages, int id){
+        this.storages = storages;
+        this.id = id;
+    }
 }
