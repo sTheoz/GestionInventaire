@@ -184,29 +184,43 @@ public class DevicesView {
         }
     }*/
 
+    public void sleep(){
+        try{
+            Thread.sleep(4000);
+        }catch(InterruptedException e){
+            System.err.print("Sleep error");
+        }
+    }
+
     public void printAllDevices(){
         System.out.println("All devices :");
         System.out.println(dc.toStringDevices(dc.getInventory()));
+        sleep();
+        
     }
 
     public void printDevicesByType(Device.Type t){
         System.out.println("All " + t + " :");
         System.out.println(dc.toStringDevicesByType(dc.getInventory(), t));
+        sleep();
     }
 
     public void printAllAvailableDevices(){
         System.out.println("All available devices :");
         System.out.println(dc.toStringAvailableDevices(dc.getInventory()));
+        sleep();
     }
 
     public void printAllNotAvailableDevices(){
         System.out.println("All unavailable devices :");
         System.out.println(dc.toStringNotAvailableDevices(dc.getInventory()));
+        sleep();
     }
 
     public void printStorageLocation(){
         System.out.println("All storages :");
         System.out.println(dc.toStringLocation(dc.getInventory()));
+        sleep();
     }
 
     public void serialise(){

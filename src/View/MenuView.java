@@ -22,7 +22,7 @@ public class MenuView {
         if(bcf.exists())borrowView.deserialise();
     }
 
-    public void clearScreen() {  
+    public void clearScreen() {
         System.out.print("\033[H\033[2J");  
         System.out.flush();  
     }  
@@ -132,18 +132,9 @@ public class MenuView {
                 borrowView.serialise();
                 storageView.serialise();
                 deviceView.serialise();
-                System.out.println("Quitter");
+                System.out.print("Sauvegarde des données...");
+                System.out.println("\rAu revoir !              ");
                 return -1;
-            case "6" :
-                System.out.println("Serialise");
-                borrowView.serialise();
-                storageView.serialise();
-                break;
-            case "7" :
-                System.out.println("Deserialise");
-                borrowView.deserialise();
-                storageView.deserialise();
-                break;
             default:
                 return 1;
         }

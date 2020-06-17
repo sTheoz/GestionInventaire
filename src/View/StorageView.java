@@ -25,16 +25,19 @@ public class StorageView {
     public void printAllStorage(){
         System.out.println("All Storage :");
         System.out.println(sc.toStringStorages(sc.getStorages()));
+        sleep();
     }
 
     public void printStorageByName(String name){
         System.out.println("All " + name + " :");
         System.out.println(sc.toStringStoragesByName(sc.getStorages(), name));
+        sleep();
     }
 
     public void printStorageByLocation(String location){
         System.out.println("All storages :");
         System.out.println(sc.toStringStoragesByLocation(sc.getStorages(), location));
+        sleep();
     }
 
     public void addStorage(Scanner input_scanner){
@@ -48,6 +51,13 @@ public class StorageView {
 
     public void modifyStorage(Scanner input_scanner){
         System.out.println("=== Ici il faut modifier TODO ===");
+    }
+    public void sleep(){
+        try{
+            Thread.sleep(4000);
+        }catch(InterruptedException e){
+            System.err.print("Sleep error");
+        }
     }
     
     public void serialise(){

@@ -29,23 +29,43 @@ public class BorrowView {
 	
     public void printAllBorrows(){
         System.out.println(this.bc.toStringBorrows(this.bc.getBorrows()));
+        try{
+            Thread.sleep(4000);
+        }catch(InterruptedException e){
+            System.err.print("Sleep error");
+        }
     }
 
     public int printBorrowsByUser(int  id){
         String str = this.bc.toStringBorrowsByUser(this.bc.getBorrows(), id);
         System.out.println(str);
         if(str == "")return 0;
+        try{
+            Thread.sleep(4000);
+        }catch(InterruptedException e){
+            System.err.print("Sleep error");
+        }
         return 1;
     }
 
     public void printBorrowsInLate(){
         System.out.println(this.bc.toStringBorrowsInLate(this.bc.getBorrows()));
+        try{
+            Thread.sleep(4000);
+        }catch(InterruptedException e){
+            System.err.print("Sleep error");
+        }
     }
     
     public int printBorrowsByJustification(String j){
         String str = this.bc.toStringBorrowsByJustification(this.bc.getBorrows(), j);
         System.out.println(str);
         if(str == "")return 0;
+        try{
+            Thread.sleep(4000);
+        }catch(InterruptedException e){
+            System.err.print("Sleep error");
+        }
         return 1;
     }
 
