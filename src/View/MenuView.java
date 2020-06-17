@@ -33,8 +33,7 @@ public class MenuView {
         System.out.println("\t4.4 : Utilisateur");
         System.out.println("\t5 : Quitter");
         while(true){
-            Scanner input_scanner = new Scanner(System.in);
-            this.term_result = (input_scanner.nextLine());
+            this.term_result = ((this.input_scanner).nextLine());
             //Pas d'inquiétude, le scanner est clos en fin de programme
             return this.term_result;
         }
@@ -58,19 +57,30 @@ public class MenuView {
                 borrowView.printAllBorrows();
                 break;
             case "2.2" :
-                borrowView.printBorrowsByJusitification("Justification à passer");
+                do{
+                    System.out.println("Rentrez la justification souhaitée : ");
+                    this.term_result = ((this.input_scanner).nextLine());
+                    //Pas d'inquiétude, le scanner est clos en fin de programme
+                    break;
+                }while(borrowView.printBorrowsByJustification(this.term_result) == 0)
                 break;
             case "2.3" :
-                borrowView.printBorrowsByUser(102);
+                int user_id;
+                do{
+                    System.out.println("Rentrez l'id de l'utilisateur souhaité : ");
+                    user_id = ((this.input_scanner).nextInt());
+                    //Pas d'inquiétude, le scanner est clos en fin de programme
+                    break;
+                }while(borrowView.printBorrowsByUser(user_id) == 0);
                 break;
             case "2.4" :
                 borrowView.printBorrowsInLate();
                 break;
             case "3.1" :
-                System.out.println(action);
+                deviceView.printStorageLocation();
                 break;
             case "4.1" :
-                System.out.println(action);
+                deviceView.printDevicesByType( getTypeInput() );
                 break;
             case "4.2" :
                 System.out.println(action);

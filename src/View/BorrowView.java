@@ -34,8 +34,8 @@ public class BorrowView {
         System.out.println(this.bc.toStringBorrowsInLate(this.bc.getBorrows()));
     }
     
-    public void printBorrowsByJusitification(String j){
-        System.out.println(this.bc.toStringBorrowsByJusitification(this.bc.getBorrows(), j));
+    public void printBorrowsByJustification(String j){
+        System.out.println(this.bc.toStringBorrowsByJustification(this.bc.getBorrows(), j));
     }
 
     public void serialise(){
