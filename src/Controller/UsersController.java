@@ -20,6 +20,9 @@ public class UsersController implements Serializable{
 
     private static final long serialVersionUID = 21L;
 
+    /**
+     * UsersController est un signeleton et ne peut pas être créé
+     */
     private UsersController(){
         this.id = 0;
         users = new ArrayList<User>();
@@ -28,7 +31,9 @@ public class UsersController implements Serializable{
     /** Instance unique non préinitialisée */
     private static UsersController INSTANCE = null;
      
-    /** Point d'accès pour l'instance unique du Stock */
+    /** 
+     * Récupère ou crée l'instance de la classe
+     * */
     public static UsersController getInstance()
     {           
         if (INSTANCE == null)
@@ -36,27 +41,51 @@ public class UsersController implements Serializable{
         }
         return INSTANCE;
     }
-
+    /**
+     * Créer et retourne un utilisateur User
+     * @param firstName prénom pour la création d'un User
+     * @param name nom de famille pour la création d'un User
+     * @param addr adresse postal pour la création d'un User
+     * @param phoneNumber numéro de téléphone pour la création d'un User
+     * @param mail email pour la création d'un User
+     * @return un utilisateur User
+     */
     public User addUser(String firstName, String name, String addr, String phoneNumber, String mail){
         User u = new User(firstName, name, addr, phoneNumber, mail, getId());
         users.add(u);
         return u;
     }
-
+    /**
+     * Retire un utilisateur p de l'annuaire
+     * @param p un utilisateur
+     */
     public void removeUser(User p){
         users.remove(p);
     }
 
+    /**
+     * Recupère un ID disponible
+     * @return id
+     */
     public int getId(){
         int idR = this.id;
         this.id++;
         return idR;
     }
 
+    /**
+     * Récupère tous les utilisateurs stockés dans users
+     * @return ArrayList de User
+     */
     public ArrayList<User> getUsers(){
         return users;
     }
 
+    /**
+     * Récupère un Utilisateur en fonction de son id ou null si non trouvé
+     * @param id id d'un utilisateur
+     * @return user trouvé ou null
+     */
     public User getUserByID(int id){
         User u;
         Iterator<User> iter = users.iterator();
@@ -69,6 +98,9 @@ public class UsersController implements Serializable{
         return null;
     }
 
+    /**
+     * Permet d'initialiser le singleton lors de la désérialisation du fichier data/usersController.ser
+     */
     public void deserialise(ArrayList<User> users, int id){
         this.users = users;
         this.id = id;

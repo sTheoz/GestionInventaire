@@ -145,7 +145,7 @@ public class MenuView {
                 storageView.serialise();
                 deviceView.serialise();
                 System.out.print("Sauvegarde des données...");
-                System.out.println("\rAu revoir !            ");
+                System.out.println("\rAu revoir !              ");
                 borrowView.clear();
                 return -1;
             default:

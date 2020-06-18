@@ -66,10 +66,19 @@ public class BorrowView {
         }
     }
     
+    /**
+     * 
+     * @param id
+     */
     public void printBorrowsById(int id){
         System.out.println(this.bc.toStringBorrowsById(id));
     }
 
+    /**
+     * Affiche les emprunts en fonction de la raison
+     * @param j raison
+     * @return 0 s'il n'y a pas d'emprunt et 1 si des emprunts trouvés
+     */
     public int printBorrowsByJustification(String j){
         String str = this.bc.toStringBorrowsByJustification(this.bc.getBorrows(), j);
         System.out.println(str);
@@ -82,6 +91,9 @@ public class BorrowView {
         return 1;
     }
 
+    /**
+     * Fait une sauvegarde des données
+     */
     public void serialise(){
         try{
             File fichier =  new File("data/borrowsController.ser") ;
@@ -106,6 +118,9 @@ public class BorrowView {
         }
     }
 
+    /**
+     * Ouvre les fichiers pour récupérer les sauvegardes des données
+     */
     public void deserialise(){
         try{
             File fichier =  new File("data/borrowsController.ser") ;
@@ -144,6 +159,12 @@ public class BorrowView {
         }  
     }
 
+    /**
+     * Ajoute un nouveau emprunt
+     * @param expiration Date limite de l'emprunt
+     * @param justif Raison de l'emprunt
+     * @param u Emprunteur
+     */
     public void addBorrow(GregorianCalendar expiration, String justif, User u){
         Borrow b = new Borrow(new GregorianCalendar(), expiration, justif, u, bc.getId());
         System.out.println("Les produits disponible :");
@@ -156,6 +177,10 @@ public class BorrowView {
         bc.addBorrow(b);
     }
 
+    /**
+     * Demande à l'utilisateur pour créer un emprunt
+     * @param input Permet de récuperer les données de l'entrée standard
+     */
     public void askCreateBorrow(Scanner input){
         String term_result;
         clear();
@@ -191,11 +216,18 @@ public class BorrowView {
         this.addBorrow(c, justif ,u1);
     }
 
+    /**
+     * Vide le terminal
+     */
     public void clear(){
         System.out.print("\033[H\033[2J");  
         System.out.flush();
     }
 
+    /**
+     * Demande à l'utilisateur pour modifier un emprunt
+     * @param input Permet de récuperer les données de l'entrée standard
+     */
     public void askModifyBorrow(Scanner input){
         clear();
         System.out.println("=== Modification d'un emprunt ===");
