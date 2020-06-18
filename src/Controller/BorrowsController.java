@@ -9,6 +9,13 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.Scanner;
 
+/**
+ * BorrowsController est une classe représentant le point de contact pour toutes les actions que l'on a avec 
+ * les emprunts (@see Borrow)
+ * 
+ * @author Lucas NAVETEUR et Théo SZATKOWSKI
+ * @version 1.0
+ */
 public class BorrowsController implements Serializable{
 
     private ArrayList<Borrow> borrows;

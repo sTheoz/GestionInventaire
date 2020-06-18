@@ -6,6 +6,13 @@ import java.util.Iterator;
 
 import src.Model.User;
 
+/**
+ * UsersController est une classe représentant le point de contact pour toutes les actions que l'on a avec 
+ * les utilisateurs (@see User)
+ * 
+ * @author Lucas NAVETEUR et Théo SZATKOWSKI
+ * @version 1.0
+ */
 public class UsersController implements Serializable{
     
     private ArrayList<User> users;

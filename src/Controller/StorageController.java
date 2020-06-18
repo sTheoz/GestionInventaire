@@ -6,6 +6,13 @@ import src.Model.Storage;
 import java.util.Iterator;
 import java.util.Scanner;
 
+/**
+ * StorageController est une classe représentant le point de contact pour toutes les actions que l'on a avec 
+ * les lieux de stockage (@see Storage)
+ * 
+ * @author Lucas NAVETEUR et Théo SZATKOWSKI
+ * @version 1.0
+ */
 public class StorageController implements Serializable{
     
     private ArrayList<Storage> storages;

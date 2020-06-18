@@ -2,6 +2,12 @@ package src.Model;
 
 import java.io.Serializable;
 
+/**
+ * Storage est une classe représentant un lieu de stockage
+ * 
+ * @author Lucas NAVETEUR et Théo SZATKOWSKI
+ * @version 1.0
+ */
 public class Storage implements Serializable{
     private int id;
     private String name;

@@ -11,6 +11,13 @@ import java.util.Calendar;
 
 import src.Model.devices.Device;
 
+
+/**
+ * Borrow est une classe représentant un emprunt
+ * 
+ * @author Lucas NAVETEUR et Théo SZATKOWSKI
+ * @version 1.0
+ */
 public class Borrow implements Serializable{
 
     private GregorianCalendar dateBorrow;

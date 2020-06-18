@@ -2,6 +2,12 @@ package src.Model.devices;
 
 import src.Model.Storage;
 
+/**
+ * Phone est une classe représentant un téléphone
+ * 
+ * @author Lucas NAVETEUR et Théo SZATKOWSKI
+ * @version 1.0
+ */
 public class Phone extends Device{
 	
 	public enum SE{Android, iOs, Windows, NA};

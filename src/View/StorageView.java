@@ -10,6 +10,12 @@ import java.util.Scanner;
 
 import src.Controller.StorageController;
 
+/**
+ * StorageView est une classe représentant l'échange homme-machine concernant les lieux de stockage
+ * 
+ * @author Lucas NAVETEUR et Théo SZATKOWSKI
+ * @version 1.0
+ */
 public class StorageView {
     
     private StorageController sc;

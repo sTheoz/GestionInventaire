@@ -14,6 +14,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
+/**
+ * DevicesView est une classe représentant l'échange homme-machine concernant les appareils
+ * 
+ * @author Lucas NAVETEUR et Théo SZATKOWSKI
+ * @version 1.0
+ */
+
 public class DevicesView {
     
     private DevicesController dc;

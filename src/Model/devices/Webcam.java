@@ -2,6 +2,12 @@ package src.Model.devices;
 
 import src.Model.Storage;
 
+/**
+ * Webcam est une classe représentant une webcam
+ * 
+ * @author Lucas NAVETEUR et Théo SZATKOWSKI
+ * @version 1.0
+ */
 public class Webcam extends Device{
 
 	public enum Resolution{LOW, MEDIUM, HIGH, NA};  

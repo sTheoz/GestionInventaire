@@ -10,6 +10,13 @@ import java.util.Set;
 import java.util.List;
 import java.util.Iterator;
 
+/**
+ * DevicesController est une classe représentant le point de contact pour toutes les actions que l'on a avec 
+ * les appareils (@see Device)
+ * 
+ * @author Lucas NAVETEUR et Théo SZATKOWSKI
+ * @version 1.0
+ */
 public class DevicesController implements Serializable{
 
     //ID available for futur device

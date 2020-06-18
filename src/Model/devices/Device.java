@@ -6,6 +6,12 @@ import java.io.Serializable;
 
 import src.Model.Storage;
 
+/**
+ * Device est une classe abstraite représentant les caractéristiques communes d'un appareil
+ * 
+ * @author Lucas NAVETEUR et Théo SZATKOWSKI
+ * @version 1.0
+ */
 public abstract class Device implements Serializable{
 	
 	public enum State{OK, KO, NEW, NA}

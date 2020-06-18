@@ -17,6 +17,13 @@ import src.Controller.BorrowsController;
 import src.Controller.DevicesController;
 import src.Controller.UsersController;
 
+
+/**
+ * BorrowView est une classe représentant l'échange homme-machine concernant les emprunts
+ * 
+ * @author Lucas NAVETEUR et Théo SZATKOWSKI
+ * @version 1.0
+ */
 public class BorrowView {
 
     private BorrowsController bc;

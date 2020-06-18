@@ -6,6 +6,12 @@ import java.util.Scanner;
 import src.Controller.StorageController;
 import src.Model.devices.Device;
 
+/**
+ * MenuView est une classe représentant l'échange homme-machine avec le Menu principal
+ * 
+ * @author Lucas NAVETEUR et Théo SZATKOWSKI
+ * @version 1.0
+ */
 public class MenuView {
     private StorageView  storageView = new StorageView();
     private BorrowView borrowView = new BorrowView();
