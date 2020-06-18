@@ -40,6 +40,10 @@ public class StorageView {
         sleep();
     }
 
+    public void printStorageByID(int id){
+        System.out.println(sc.toStringStorageByID(id));
+    }
+
     public void addStorage(Scanner input_scanner){
         System.out.println("=== Ajout d'un lieu de stockage ===");
         System.out.print("Localisation :");
@@ -49,8 +53,33 @@ public class StorageView {
         sc.addStorage(name, location, sc.getId());
     }
 
-    public void modifyStorage(Scanner input_scanner){
-        System.out.println("=== Ici il faut modifier TODO ===");
+    public void clear(){
+        System.out.print("\033[H\033[2J");  
+        System.out.flush();
+    }
+
+    public void modifyStorage(Scanner input){
+        clear();
+        System.out.println("=== Modifier un lieu de stockage ===");
+        printAllStorage();
+        System.out.print("ID de l'emprunt :");
+        int id = Integer.parseInt(input.nextLine());
+        clear();
+        printStorageByID(id);
+        System.out.println("[0] Modifier le nom");
+        System.out.println("[1] Modifier la localisation");
+        System.out.println("[x] Revenir au menu");
+        String attribute = input.nextLine();
+        switch(attribute){
+            case "0":
+                sc.modifyName(id, input);
+                break;
+            case "1":
+                sc.modifyLocalisation(id, input);
+                break;
+            default:
+                return;
+        }
     }
     public void sleep(){
         try{

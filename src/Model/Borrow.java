@@ -34,7 +34,7 @@ public class Borrow implements Serializable{
 
     @Override
     public String toString(){
-        return borrower.getFirstName() + " " + borrower.getName() + " borrow " + devices.toString() + " pour la raison: " + justification + "\ndepuis le " + getDate() + " jusqu'au " + getEndBorrow();
+        return  "[" + this.id + "] " + borrower.getFirstName() + " " + borrower.getName() + " borrow " + devices.toString() + " pour la raison: " + justification + "\ndepuis le " + getDate() + " jusqu'au " + getEndBorrow();
     }
 
     public int getID(){
@@ -51,6 +51,10 @@ public class Borrow implements Serializable{
         String str = "";
         str =  dateEndBorrow.get(Calendar.DATE) + "/" + (dateEndBorrow.get(Calendar.MONTH)+1) + "/" + dateEndBorrow.get(Calendar.YEAR); 
         return str;
+    }
+
+    public GregorianCalendar getExpiration(){
+        return this.dateEndBorrow;
     }
 
     public String getJustification(){

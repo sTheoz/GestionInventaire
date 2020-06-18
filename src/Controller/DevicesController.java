@@ -53,6 +53,18 @@ public class DevicesController implements Serializable{
         this.inventory = new ArrayList<Device>();
     }
 
+    public String toStringDevicesByStorage(int id){
+        String str = "";
+        Iterator<Device> iter = inventory.iterator();
+        while(iter.hasNext()){
+            Device d = iter.next();
+            if(d.getLocation().getID() == id){
+                str += d.toString()+"\n";
+            }
+        }
+        return str;
+    }
+
     public String toStringDevices(ArrayList<Device> list){
         String str = "";
         Iterator<Device> iter = list.iterator();

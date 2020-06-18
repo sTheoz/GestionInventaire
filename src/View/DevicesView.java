@@ -24,6 +24,11 @@ public class DevicesView {
         this.sc = StorageController.getInstance();
     }
 
+    public void clear(){
+        System.out.print("\033[H\033[2J");  
+        System.out.flush();
+    }
+
     public void addDevice(Device.Type type, Scanner input_scanner){
         String ref, name, brand, temp;
         int price, nb, vr;
@@ -32,6 +37,7 @@ public class DevicesView {
         Device.State st;
         Storage location;
         Webcam.Resolution rs;
+        clear();
         System.out.println("Rentrez la référence : ");
         ref = (input_scanner.nextLine());
         System.out.println("Rentrez le nom : ");
@@ -59,7 +65,10 @@ public class DevicesView {
                 System.out.println("Rentrez un état valide");
                 return;
         }
-        System.out.println("Rentrez l'endroit de stockage : ");
+        StorageController sc = StorageController.getInstance();
+        System.out.println("Lieu de stockage disponibles: ");
+        System.out.println(sc.toStringStorages(sc.getStorages()));
+        System.out.println("Rentrez le lieu de stockage [id]: ");
         location = this.sc.getStorageByID(Integer.parseInt(input_scanner.nextLine()));
         System.out.println("Rentrez la quantité : ");
         nb = Integer.parseInt((input_scanner.nextLine()));
@@ -205,8 +214,25 @@ public class DevicesView {
         sleep();
     }
 
+    public void printDevicesByStockage(Scanner input){
+        int id;
+        String str ="";
+        System.out.print("Veuillez rentrer l'ID d'un stock :");
+        str = input.nextLine();
+        try{
+            id = Integer.parseInt(str);
+            System.out.println("Tous les appareils du stock " + id + ":");
+            str = dc.toStringDevicesByStorage(id);
+            if(str.compareTo("") == 0)System.out.println("Aucun appareil dans ce lieu de stockage");
+            else System.out.println(str);
+        }catch(NumberFormatException e){
+            System.out.println("ID invalide");
+        }
+        sleep();
+    }
+
     public void printAllAvailableDevices(){
-        System.out.println("All available devices :");
+        System.out.println("Tous les appareils disponibles :");
         System.out.println(dc.toStringAvailableDevices(dc.getInventory()));
         sleep();
     }

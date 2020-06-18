@@ -49,7 +49,9 @@ public class BorrowView {
     }
 
     public void printBorrowsInLate(){
-        System.out.println(this.bc.toStringBorrowsInLate(this.bc.getBorrows()));
+        String str = this.bc.toStringBorrowsInLate(this.bc.getBorrows());
+        if(str.compareTo("") == 0)System.out.println("Il n'y a pas d'emprunt en retard");
+        else System.out.println(str);
         try{
             Thread.sleep(4000);
         }catch(InterruptedException e){
@@ -57,6 +59,10 @@ public class BorrowView {
         }
     }
     
+    public void printBorrowsById(int id){
+        System.out.println(this.bc.toStringBorrowsById(id));
+    }
+
     public int printBorrowsByJustification(String j){
         String str = this.bc.toStringBorrowsByJustification(this.bc.getBorrows(), j);
         System.out.println(str);
@@ -145,6 +151,7 @@ public class BorrowView {
 
     public void askCreateBorrow(Scanner input){
         String term_result;
+        clear();
         System.out.println("=== Ajout d'un emprunt ===");
         UsersController uc = UsersController.getInstance();
         System.out.print("Id de l'Utilisateur (-1 pour créer un nouvel utilisateur) :");
@@ -173,38 +180,48 @@ public class BorrowView {
         GregorianCalendar c = new GregorianCalendar(Integer.parseInt(year), Integer.parseInt(month)-1, Integer.parseInt(day));
         System.out.print("Raison de l'emprunt :");
         String justif = input.nextLine();
+        clear();
         this.addBorrow(c, justif ,u1);
     }
 
+    public void clear(){
+        System.out.print("\033[H\033[2J");  
+        System.out.flush();
+    }
+
     public void askModifyBorrow(Scanner input){
+        clear();
         System.out.println("=== Modification d'un emprunt ===");
+        printAllBorrows();
         System.out.print("ID de l'emprunt :");
         int id = Integer.parseInt(input.nextLine());
+        clear();
+        printBorrowsById(id);
         System.out.println("[0] Modifier la date d'expiration");
         System.out.println("[1] Modifier la raison de l'emprunt");
         System.out.println("[2] Ajouter un appareil");
         System.out.println("[3] Supprimer un appareil");
         System.out.println("[4] Rendre l'emprunt");
         System.out.println("[x] Revenir au menu");
-        int attribute = Integer.parseInt(input.nextLine());
+        String attribute = input.nextLine();
         switch(attribute){
-            case 0:
+            case "0":
                 bc.modifyExpiration(id, input);
                 break;
-            case 1:
+            case "1":
                 bc.modifyJustification(id, input);
                 break;
-            case 2:
+            case "2":
                 System.out.println("Les produits disponible :");
                 System.out.println(DevicesController.getInstance().toStringAvailableDevices(DevicesController.getInstance().getInventory()));
                 Borrow b = bc.getBorrowByID(id);
                 bc.addDevice( b, DevicesController.getInstance().getDeviceByID(Integer.parseInt(input.nextLine())));
                 break;
-            case 3:
+            case "3":
                 b = bc.getBorrowByID(id);
                 bc.deleteDevice(b, DevicesController.getInstance().getDeviceByID(Integer.parseInt(input.nextLine())));
                 break;
-            case 4:
+            case "4":
                 b = bc.getBorrowByID(id);
                 bc.removeBorrow(b);
                 break;

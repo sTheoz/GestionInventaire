@@ -46,6 +46,18 @@ public class BorrowsController implements Serializable{
         return str;
     }
 
+    public String toStringBorrowsById(int id){
+        Borrow b;
+        Iterator<Borrow> iter = borrows.iterator();
+        while(iter.hasNext()){
+            b = iter.next();
+            if(b.getID() == id){
+                return b.toString();
+            }
+        }
+        return "";
+    }
+
     public String toStringBorrowsByJustification(ArrayList<Borrow> borrows, String j){
         String str = "";
         Iterator<Borrow> iter = borrows.iterator();
@@ -61,15 +73,15 @@ public class BorrowsController implements Serializable{
 
     public String toStringBorrowsInLate(ArrayList<Borrow> borrows){
         String str = "";
-        /*Iterator<Borrow> iter = borrows.iterator();
+        Iterator<Borrow> iter = borrows.iterator();
         Borrow b;
-        Date d = new Date(System.currentTimeMillis());
+        GregorianCalendar d = new GregorianCalendar();
         while(iter.hasNext()){
             b = iter.next();
-            if(b.getEndBorrow() ){
+            if(b.getExpiration().before(d) ){
                 str += b.toString()+"\n";
             }
-        }*/
+        }
         return str;
     }
 

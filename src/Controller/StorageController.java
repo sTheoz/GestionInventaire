@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import src.Model.Storage;
 import java.util.Iterator;
+import java.util.Scanner;
 
 public class StorageController implements Serializable{
     
@@ -38,6 +39,45 @@ public class StorageController implements Serializable{
                 return d;
         }
         return new Storage("", "", -1);
+    }
+
+    public String toStringStorageByID(int id){
+        Iterator<Storage> iter = (this.storages).iterator();
+        Storage d;
+        while(iter.hasNext()){
+            d = iter.next();
+            if(d.getID() == id)
+                return d.toString();
+        }
+        return "";
+    }
+
+    public void modifyName(int id, Scanner input){
+        Iterator<Storage> iter = storages.iterator();
+        Storage s;
+        while(iter.hasNext()){
+            s = iter.next();
+            if(s.getID() == id){
+                System.out.print("Nouveau nom:");
+                String name = input.nextLine();
+                s.setName(name);
+                return;
+            }
+        }
+    }
+    
+    public void modifyLocalisation(int id, Scanner input){
+        Iterator<Storage> iter = storages.iterator();
+        Storage s;
+        while(iter.hasNext()){
+            s = iter.next();
+            if(s.getID() == id){
+                System.out.print("Nouvelle localisation:");
+                String localisation = input.nextLine();
+                s.setLocation(localisation);
+                return;
+            }
+        }
     }
 
     public int addStorage(String name, String location, int id){

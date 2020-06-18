@@ -29,12 +29,13 @@ public class MenuView {
 
     public String printMenu(){
         this.clearScreen();
-        System.out.println("=== MENU ===");
+        System.out.println("=============== MENU ===============");
         System.out.println("Afficher le matériel");
         System.out.println("\t1.1 : Total");
         System.out.println("\t1.2 : Disponible");
         System.out.println("\t1.3 : Emprunté");
         System.out.println("\t1.4 : Selon leur type");
+        System.out.println("\t1.5 : Par lieu stockage");
         System.out.println("Afficher les emprunts");
         System.out.println("\t2.1 : Totaux");
         System.out.println("\t2.2 : Selon la raison d'emprunt");
@@ -49,6 +50,7 @@ public class MenuView {
         System.out.println("\t4.4 : Utilisateur");
         System.out.println("\t5 : Quitter");
         while(true){
+            System.out.print("Où allons-nous ?(numéro du choix) ");
             this.term_result = ((this.input_scanner).nextLine());
             //Pas d'inquiétude, le scanner est clos en fin de programme
             return this.term_result;
@@ -69,6 +71,10 @@ public class MenuView {
             case "1.4" :
                 deviceView.printDevicesByType( getTypeInput() );
                 break;
+            case "1.5" :
+                storageView.printAllStorage();
+                deviceView.printDevicesByStockage( input_scanner );
+                break;
             case "2.1" :
                 borrowView.printAllBorrows();
                 break;
@@ -79,11 +85,12 @@ public class MenuView {
                 }while(borrowView.printBorrowsByJustification(this.term_result) == 0);
                 break;
             case "2.3" :
-                int user_id;
+                String user_id;
                 do{
                     System.out.println("Rentrez l'id de l'utilisateur souhaité (-1 for exit): ");
-                    user_id = Integer.parseInt(((this.input_scanner).nextLine()));
-                }while(borrowView.printBorrowsByUser(user_id) == 0 || user_id == -1);
+                    user_id = (this.input_scanner).nextLine();
+                    clearScreen();
+                }while(user_id.compareTo("-1") != 0 && borrowView.printBorrowsByUser(Integer.parseInt(user_id)) == 0);
                 break;
             case "2.4" :
                 borrowView.printBorrowsInLate();
@@ -113,7 +120,6 @@ public class MenuView {
                 if(term_result.compareTo("0") == 0){
                     borrowView.askCreateBorrow(input_scanner);
                 }else if(term_result.compareTo("1") == 0){
-                    System.out.println(" Modifier emprunt TODO");
                     borrowView.askModifyBorrow(input_scanner);
                 }
                 break;
@@ -133,7 +139,8 @@ public class MenuView {
                 storageView.serialise();
                 deviceView.serialise();
                 System.out.print("Sauvegarde des données...");
-                System.out.println("\rAu revoir !              ");
+                System.out.println("\rAu revoir !            ");
+                borrowView.clear();
                 return -1;
             default:
                 return 1;

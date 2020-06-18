@@ -41,6 +41,6 @@ public class Storage implements Serializable{
 
     @Override
     public String toString(){
-        return this.name + " : " + this.location; 
+        return  "[" + this.id + "] " + this.name + " : " + this.location; 
     }
 }
