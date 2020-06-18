@@ -97,6 +97,9 @@ public class Borrow implements Serializable{
         devices.remove(d);
     }
 
+    /**
+     * Sauvegarde les données
+     */
     public void serialise(){
         try{
             File fichier =  new File("data/borrowController"+ serialVersionUID +".ser") ;

@@ -33,6 +33,7 @@ public class StorageController implements Serializable{
     
     /** 
      * Récupère ou crée l'instance de la classe
+     * @return le singleton StorageController
      * */
     public static StorageController getInstance()
     {           
@@ -76,8 +77,8 @@ public class StorageController implements Serializable{
 
     /**
      * Modifie le nom d'un lieu de stockage
-     * @param id
-     * @param input
+     * @param id id du lieu
+     * @param input entrée standard
      */
     public void modifyName(int id, Scanner input){
         Iterator<Storage> iter = storages.iterator();
@@ -95,8 +96,8 @@ public class StorageController implements Serializable{
     
     /**
      * Modifie la localisation d'un lieu de stockage
-     * @param id
-     * @param input
+     * @param id id du lieu
+     * @param input entrée standard
      */
     public void modifyLocalisation(int id, Scanner input){
         Iterator<Storage> iter = storages.iterator();
@@ -114,10 +115,10 @@ public class StorageController implements Serializable{
 
     /**
      * Ajoute un lieu de stockage
-     * @param name
-     * @param location
-     * @param id
-     * @return
+     * @param name nom du lieu
+     * @param location localisation
+     * @param id id du lieu
+     * @return 1 pour confirmer l'ajout
      */
     public int addStorage(String name, String location, int id){
         storages.add(new Storage(name, location, id));
@@ -126,7 +127,7 @@ public class StorageController implements Serializable{
 
     /**
      * Retire un lieu de stockage de la liste storages
-     * @param s
+     * @param s Lieu de stockage
      */
     public void removeStorage(Storage s){
         storages.remove(s);
@@ -134,7 +135,7 @@ public class StorageController implements Serializable{
 
     /**
      * Recupère un id disponible
-     * @return
+     * @return id disponible
      */
     public int getId(){
         int idR = this.id;
@@ -144,7 +145,7 @@ public class StorageController implements Serializable{
 
     /**
      * Récupère tous les lieux de stockage
-     * @return
+     * @return lieux de stockage
      */
     public ArrayList<Storage> getStorages(){
         return storages;
@@ -200,6 +201,8 @@ public class StorageController implements Serializable{
 
     /**
      * Permet d'initialiser le singleton lors de la désérialisation du fichier data/storageController.ser
+     * @param storages liste des lieux de stockage
+     * @param id id disponible
      */
     public void deserialise(ArrayList<Storage> storages, int id){
         this.storages = storages;

@@ -28,12 +28,18 @@ public class BorrowView {
 
     private BorrowsController bc;
     private DevicesController dc;
-	
+    
+    /**
+     * Echange avec l'utilisateur pour les emprunts
+     */
     public BorrowView(){
         this.bc = BorrowsController.getInstance();
         this.dc = DevicesController.getInstance();
     }
-	
+    
+    /**
+     * Affiche tous les emprunts
+     */
     public void printAllBorrows(){
         System.out.println(this.bc.toStringBorrows(this.bc.getBorrows()));
         try{
@@ -43,6 +49,11 @@ public class BorrowView {
         }
     }
 
+    /**
+     * Affiche les emprunts d'un utilisateur
+     * @param id id de l'utilisateur
+     * @return 0 si pas d'emprunt sinon 1
+     */
     public int printBorrowsByUser(int  id){
         String str = this.bc.toStringBorrowsByUser(this.bc.getBorrows(), id);
         System.out.println(str);
@@ -55,6 +66,9 @@ public class BorrowView {
         return 1;
     }
 
+    /**
+     * Affiche les emprunts en retard
+     */
     public void printBorrowsInLate(){
         String str = this.bc.toStringBorrowsInLate(this.bc.getBorrows());
         if(str.compareTo("") == 0)System.out.println("Il n'y a pas d'emprunt en retard");
@@ -67,8 +81,8 @@ public class BorrowView {
     }
     
     /**
-     * 
-     * @param id
+     * Affiche un emprunt en fonction de son id
+     * @param id id de l'emprunt
      */
     public void printBorrowsById(int id){
         System.out.println(this.bc.toStringBorrowsById(id));

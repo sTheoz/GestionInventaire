@@ -33,6 +33,7 @@ public class UsersController implements Serializable{
      
     /** 
      * Récupère ou crée l'instance de la classe
+     * @return Singleton de UsersController
      * */
     public static UsersController getInstance()
     {           
@@ -100,6 +101,8 @@ public class UsersController implements Serializable{
 
     /**
      * Permet d'initialiser le singleton lors de la désérialisation du fichier data/usersController.ser
+     * @param users liste des utilisateurs
+     * @param id id disponible
      */
     public void deserialise(ArrayList<User> users, int id){
         this.users = users;

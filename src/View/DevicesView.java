@@ -26,16 +26,27 @@ public class DevicesView {
     private DevicesController dc;
     private StorageController sc;
 
+    /**
+     * Echange avec l'utilisateur par rapport aux appareils
+     */
     public DevicesView(){
         this.dc = DevicesController.getInstance();
         this.sc = StorageController.getInstance();
     }
 
+    /**
+     * Vide le terminal
+     */
     public void clear(){
         System.out.print("\033[H\033[2J");  
         System.out.flush();
     }
 
+    /**
+     * Ajoute un appareil
+     * @param type son type 
+     * @param input_scanner entrée standard
+     */
     public void addDevice(Device.Type type, Scanner input_scanner){
         String ref, name, brand, temp;
         int price, nb, vr;
@@ -200,6 +211,9 @@ public class DevicesView {
         }
     }*/
 
+    /**
+     * Fonction d'attente
+     */
     public void sleep(){
         try{
             Thread.sleep(4000);
@@ -208,6 +222,9 @@ public class DevicesView {
         }
     }
 
+    /**
+     * Affiche tous les appareils
+     */
     public void printAllDevices(){
         System.out.println("All devices :");
         System.out.println(dc.toStringDevices(dc.getInventory()));
@@ -215,12 +232,20 @@ public class DevicesView {
         
     }
 
+    /**
+     * Affiche tous les appareils en fonction d'un type
+     * @param t Type de l'appareil
+     */
     public void printDevicesByType(Device.Type t){
         System.out.println("All " + t + " :");
         System.out.println(dc.toStringDevicesByType(dc.getInventory(), t));
         sleep();
     }
 
+    /**
+     * Affiche tous les appareils d'un lieu de stockage
+     * @param input entrée standard
+     */
     public void printDevicesByStockage(Scanner input){
         int id;
         String str ="";
@@ -238,24 +263,36 @@ public class DevicesView {
         sleep();
     }
 
+    /**
+     * Affiche tous les appareils disponibles
+     */
     public void printAllAvailableDevices(){
         System.out.println("Tous les appareils disponibles :");
         System.out.println(dc.toStringAvailableDevices(dc.getInventory()));
         sleep();
     }
 
+    /**
+     * Affiche tous les appareils empruntés
+     */
     public void printAllNotAvailableDevices(){
         System.out.println("All unavailable devices :");
         System.out.println(dc.toStringNotAvailableDevices(dc.getInventory()));
         sleep();
     }
 
+    /**
+     * Affiche tous les lieux de stockage
+     */
     public void printStorageLocation(){
-        System.out.println("All storages :");
+        System.out.println("Tous les lieux de stockage :");
         System.out.println(dc.toStringLocation(dc.getInventory()));
         sleep();
     }
 
+    /**
+     * Sauvegarde les données
+     */
     public void serialise(){
         try{
             File fichier =  new File("data/devicesController.ser") ;
@@ -270,6 +307,10 @@ public class DevicesView {
             System.err.println("Errorrrr 1");
         }
     }
+
+    /**
+     * Récupère les données sauvegardés
+     */
     public void deserialise(){
         try{
             File fichier =  new File("data/devicesController.ser") ;

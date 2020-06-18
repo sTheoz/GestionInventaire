@@ -131,6 +131,7 @@ public class BorrowsController implements Serializable{
     
      /** 
      * Récupère ou crée l'instance de la classe
+     * @return Singleton de BorrowsController
      */
     public static BorrowsController getInstance(){           
         if (INSTANCE == null){ 

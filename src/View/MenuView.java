@@ -19,6 +19,9 @@ public class MenuView {
     private String term_result;
     private Scanner input_scanner = new Scanner(System.in);
     
+    /**
+     * Echange entre le programme et l'utilisateur avec le menu principal
+     */
     public MenuView(){
         File bcf = new File("data/borrowsController.ser");
         File dcf = new File("data/devicesController.ser");
@@ -28,11 +31,18 @@ public class MenuView {
         if(bcf.exists())borrowView.deserialise();
     }
 
+    /**
+     * Vide le terminal
+     */
     public void clearScreen() {
         System.out.print("\033[H\033[2J");  
         System.out.flush();  
     }  
 
+    /**
+     * Affiche le menu principal
+     * @return Renvoie le choix de l'utilisateur
+     */
     public String printMenu(){
         this.clearScreen();
         System.out.println("=============== MENU ===============");
@@ -63,6 +73,11 @@ public class MenuView {
         }
     }
 
+    /**
+     * Execute les fonctions en fonction du menu choisi
+     * @param action menu choisi
+     * @return -1 pour quitter, 1 pour une mauvaise entrée
+     */
     public int executeMenu(String action){
         switch(action) {
             case "1.1" :
@@ -154,11 +169,19 @@ public class MenuView {
         return 0;
     }
 
+    /**
+     * Récupère un id
+     * @return id
+     */
     public int getIDInput(){
         System.out.println("Rentrez un ID :");
         return Integer.parseInt((this.input_scanner).nextLine());
     }
 
+    /**
+     * Récupère le Type d'un appareil en fonction de l'entrée de l'utilisateur
+     * @return Type de l'appareil
+     */
     public Device.Type getTypeInput(){
         System.out.println("Rentrez le type souhaité : Phone, Webcam, Headset, Sensor, PlayingRemote, Tablet, NA");
         while(true){

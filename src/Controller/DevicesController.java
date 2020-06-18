@@ -31,6 +31,7 @@ public class DevicesController implements Serializable{
     
     /** 
      * Récupère ou crée l'instance de la classe
+     * @return Singleton de DevicesController
      * */
     public static DevicesController getInstance()
     {           
@@ -75,8 +76,8 @@ public class DevicesController implements Serializable{
 
     /**
      * Renvoie la description des appareils d'un lieu de stockage
-     * @param id
-     * @return
+     * @param id id du lieu de stockage
+     * @return la description des appareils dans le lieu de stockage
      */
     public String toStringDevicesByStorage(int id){
         String str = "";
@@ -156,7 +157,7 @@ public class DevicesController implements Serializable{
     /**
      * Renvoie la liste des localisations utilisés par la liste des appareils devices
      * @param devices liste d'appareils
-     * @return 
+     * @return la description des lieux de stockage
      */
     public String toStringLocation(ArrayList<Device> devices){
         String str = "";
@@ -226,16 +227,16 @@ public class DevicesController implements Serializable{
     }
 
     /**
-     * Ajoute un appareil
+     * Ajoute un téléphone
      * @param ref Référence
-     * @param name
-     * @param brand
-     * @param price
-     * @param se
-     * @param sz
-     * @param st
-     * @param location
-     * @param nb
+     * @param name nom
+     * @param brand marque
+     * @param price prix
+     * @param se système d'exploitatio
+     * @param sz taille en pouce
+     * @param st status
+     * @param location localisation
+     * @param nb nombre d'appareil
      */
     public void addPhone(String ref, String name, String brand, double price, Phone.SE se, double sz, Device.State st, Storage location, int nb){
         for(int i = 0; i < nb; i++){
@@ -246,13 +247,13 @@ public class DevicesController implements Serializable{
 
     /**
      * Ajoute un détecteur de profondeur
-     * @param ref
-     * @param name
-     * @param brand
-     * @param price
-     * @param st
-     * @param location
-     * @param nb
+     * @param ref Référence
+     * @param name nom
+     * @param brand marque
+     * @param price prix
+     * @param st status
+     * @param location localisation
+     * @param nb nombre d'appareil
      */
     public void addSensor(String ref, String name, String brand, double price, Device.State st, Storage location, int nb){
         for(int i = 0; i < nb; i++){
@@ -263,14 +264,14 @@ public class DevicesController implements Serializable{
 
     /**
      * Ajoute un casque
-     * @param ref
-     * @param name
-     * @param brand
-     * @param price
-     * @param st
-     * @param location
-     * @param vr
-     * @param nb
+     * @param ref Référence
+     * @param name nom
+     * @param brand marque
+     * @param price prix
+     * @param st status
+     * @param location localisation
+     * @param nb nombre d'appareil
+     * @param vr casque vr ou non
      */
     public void addHeadset(String ref, String name, String brand, double price, Device.State st, Storage location, int vr, int nb){
         for(int i = 0; i < nb; i++){
@@ -281,13 +282,13 @@ public class DevicesController implements Serializable{
 
     /**
      * Ajoute une manette de jeu
-     * @param ref
-     * @param name
-     * @param brand
-     * @param price
-     * @param st
-     * @param location
-     * @param nb
+     * @param ref Référence
+     * @param name nom
+     * @param brand marque
+     * @param price prix
+     * @param st status
+     * @param location localisation
+     * @param nb nombre d'appareil
      */
     public void addPlayingRemote(String ref, String name, String brand, double price, Device.State st, Storage location, int nb){
         for(int i = 0 ; i < nb ; i++){
@@ -298,14 +299,14 @@ public class DevicesController implements Serializable{
 
     /**
      * Ajoute une webcam
-     * @param ref
-     * @param name
-     * @param brand
-     * @param price
-     * @param rs
-     * @param st
-     * @param location
-     * @param nb
+     * @param ref Référence
+     * @param name nom
+     * @param brand marque
+     * @param price prix
+     * @param st status
+     * @param location localisation
+     * @param nb nombre d'appareil
+     * @param rs resolution de la webcam
      */
     public void addWebcam(String ref, String name, String brand, double price, Webcam.Resolution rs, Device.State st, Storage location, int nb){
         for(int i = 0 ; i < nb ; i++){
@@ -316,19 +317,19 @@ public class DevicesController implements Serializable{
 
     /**
      * Ajoute une tablette
-     * @param ref
-     * @param nom
-     * @param marque
-     * @param prix
-     * @param se
-     * @param sz
-     * @param st
-     * @param location
-     * @param nb
+     * @param ref Référence
+     * @param name nom
+     * @param brand marque
+     * @param price prix
+     * @param se système d'exploitatio
+     * @param sz taille en pouce
+     * @param st status
+     * @param location localisation
+     * @param nb nombre d'appareil
      */
-    public void addTablet(String ref, String nom, String marque, double prix, Phone.SE se, double sz, Device.State st, Storage location, int nb){
+    public void addTablet(String ref, String name, String brand, double price, Phone.SE se, double sz, Device.State st, Storage location, int nb){
 		for(int i = 0 ; i < nb ; i++){
-            inventory.add(new Tablet(ref, nom, marque, prix, se, sz, st, location, Device.Type.Tablet, getId()));
+            inventory.add(new Tablet(ref, name, brand, price, se, sz, st, location, Device.Type.Tablet, getId()));
             incrementStock();
         }
     }

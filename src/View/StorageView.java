@@ -20,36 +20,54 @@ public class StorageView {
     
     private StorageController sc;
 
+    /**
+     * Echange avec l'utilisateur sur les lieux de stockage
+     */
     public StorageView(){
         this.sc = StorageController.getInstance();
     }
 
-    public StorageView(int id, int nbElem){
-        this.sc = StorageController.getInstance();
-    }
-
+    /**
+     * Affiche tous les lieux de stockage
+     */
     public void printAllStorage(){
         System.out.println("All Storage :");
         System.out.println(sc.toStringStorages(sc.getStorages()));
         sleep();
     }
 
+    /**
+     * Affiche un lieu de stockage en fonction de son nom
+     * @param name nom des lieux de stockage
+     */
     public void printStorageByName(String name){
         System.out.println("All " + name + " :");
         System.out.println(sc.toStringStoragesByName(sc.getStorages(), name));
         sleep();
     }
 
+    /**
+     * Affiche un lieu de stockage par localisation
+     * @param location localisation du lieu
+     */
     public void printStorageByLocation(String location){
         System.out.println("All storages :");
         System.out.println(sc.toStringStoragesByLocation(sc.getStorages(), location));
         sleep();
     }
 
+    /**
+     * affiche un lieu de stockage par id
+     * @param id id d'un lieu de stockage
+     */
     public void printStorageByID(int id){
         System.out.println(sc.toStringStorageByID(id));
     }
 
+    /**
+     * Ajoute un lieu de stockage
+     * @param input_scanner entrée standard
+     */
     public void addStorage(Scanner input_scanner){
         System.out.println("=== Ajout d'un lieu de stockage ===");
         System.out.print("Localisation :");
@@ -59,11 +77,18 @@ public class StorageView {
         sc.addStorage(name, location, sc.getId());
     }
 
+    /**
+     * Vide le terminal
+     */
     public void clear(){
         System.out.print("\033[H\033[2J");  
         System.out.flush();
     }
 
+    /**
+     * Modifie un lieu de stockage
+     * @param input entrée standard
+     */
     public void modifyStorage(Scanner input){
         clear();
         System.out.println("=== Modifier un lieu de stockage ===");
@@ -95,6 +120,9 @@ public class StorageView {
         }
     }
     
+    /**
+     * Sauvegarde les données
+     */
     public void serialise(){
         try{
             File fichier =  new File("data/storageController.ser") ;
@@ -109,6 +137,10 @@ public class StorageView {
             System.err.println("Errorrrr 1");
         }
     }
+
+    /**
+     * Récupère les données de sauvegarde
+     */
     public void deserialise(){
         try{
             File fichier =  new File("data/storageController.ser") ;

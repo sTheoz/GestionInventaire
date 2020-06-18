@@ -1,7 +1,9 @@
 BIN_DIR = bin/
+DOC_BIN = doc/
 C = javac -g -d $(BIN_DIR)
 RM = rm
 JVM = java
+JD = javadoc -d $(DOC_BIN)
 
 SRC_DIR = src/
 CONTROLLERS_DIR = src/Controller/
@@ -26,6 +28,9 @@ play: start
 	$(JVM) -cp $(BIN_DIR) src/Start
 
 clean : 
-	$(RM) -f $(BIN_DIR)src/*.class
+	$(RM) -f $(BIN_DIR)src/*.class $(DOC_BIN)/*
+
+doc:
+	$(JD) src/*.java src/Controller/*.java src/Model/*.java src/View/*.java src/Model/devices/*.java
 
 #clear && make clean && make play
