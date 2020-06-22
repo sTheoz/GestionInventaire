@@ -23,9 +23,9 @@ public class BorrowsController implements Serializable{
     private int id;
     
     /**
-     * BorrowsController est un signeleton et ne peut pas être créé
+     * BorrowsController est un singleton et ne peut pas être créé
      */
-    public BorrowsController(){
+    private BorrowsController(){
         borrows = new ArrayList<Borrow>();
         this.id = 0;
     }

@@ -16,6 +16,7 @@ public class MenuView {
     private StorageView  storageView = new StorageView();
     private BorrowView borrowView = new BorrowView();
     private DevicesView deviceView = new DevicesView();
+    private UserView userView = new UserView();
     private String term_result;
     private Scanner input_scanner = new Scanner(System.in);
     
@@ -145,14 +146,7 @@ public class MenuView {
                 }
                 break;
             case "4.4" :
-            String name,location;
-                StorageController storage = StorageController.getInstance();
-                do{
-                    System.out.println("Rentrez le nom du stockage souhaité : ");
-                    name = ((this.input_scanner).nextLine());
-                    System.out.println("Rentrez le nom de la localisation : ");
-                    location = ((this.input_scanner).nextLine());
-                }while(storage.addStorage(name, location, StorageController.getInstance().getId()) == 0);
+                userView.askCreateUser(input_scanner);
                 break;
             case "5" :
                 (this.input_scanner).close();

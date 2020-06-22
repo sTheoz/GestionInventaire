@@ -28,9 +28,11 @@ play: start
 	$(JVM) -cp $(BIN_DIR) src/Start
 
 clean : 
-	$(RM) -f $(BIN_DIR)src/*.class $(DOC_BIN)/*
+	$(RM) -Rf $(BIN_DIR)$(SRC_DIR)*.class $(BIN_DIR)$(CONTROLLERS_DIR)*.class $(BIN_DIR)$(VIEW_DIR)*.class $(BIN_DIR)$(MODEL_DIR)*.class $(BIN_DIR)$(DEVICES_DIR)*.class $(DOC_BIN)*
 
-doc:
-	$(JD) src/*.java src/Controller/*.java src/Model/*.java src/View/*.java src/Model/devices/*.java
+doc : 
+	$(JD) $(SRC_DIR)*.java $(CONTROLLERS_DIR)*.java $(MODEL_DIR)*.java $(VIEW_DIR)*.java $(DEVICES_DIR)*.java
+
+.PHONY : doc clean
 
 #clear && make clean && make play
